@@ -194,7 +194,7 @@ class GettingStartedState extends State<GettingStarted> {
                                 // isPassword: true,
                                 isnumber: true,
                                 prefixIcon: Icons.phone_android,
-                                suffixIcon: _phonenocontroller.text.length == 8
+                                suffixIcon: _phonenocontroller.text.isNotEmpty
                                     ? Icons.check_circle
                                     : null,
                                 tfColor: Colors.grey.shade300,
@@ -216,7 +216,7 @@ class GettingStartedState extends State<GettingStarted> {
                                 // isPassword: true,
                                 isnumber: false,
                                 prefixIcon: Icons.mail,
-                                suffixIcon: _emailcontroller.text.length == 8
+                                suffixIcon: _emailcontroller.text.isNotEmpty
                                     ? Icons.check_circle
                                     : null,
                                 tfColor: Colors.grey.shade300,
@@ -368,11 +368,10 @@ class GettingStartedState extends State<GettingStarted> {
                                           textColor: Colors.white,
                                           fontSize: 16.0),
                                     }
-                                  else if (_phonenocontroller.text.length <= 8)
+                                  else if (_phonenocontroller.text.isEmpty)
                                     {
                                       Fluttertoast.showToast(
-                                          msg:
-                                              "Please Enter valid Phone number",
+                                          msg: "Please Enter Phone number",
                                           toastLength: Toast.LENGTH_SHORT,
                                           gravity: ToastGravity.CENTER,
                                           timeInSecForIosWeb: 1,
