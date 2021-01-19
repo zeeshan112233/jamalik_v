@@ -4,6 +4,7 @@ import 'package:jamalik/Ui/Favourites.dart';
 import 'package:jamalik/Ui/MyServices1.dart';
 import 'package:jamalik/Ui/ParadiseBeautySalon.dart';
 import 'package:jamalik/Ui/Payment.dart';
+import 'package:jamalik/Ui/Profile.dart';
 import 'package:jamalik/Ui/ProviderScreen.dart';
 import 'package:jamalik/Ui/Servicesscreen.dart';
 import 'package:jamalik/Ui/aboutapp.dart';
@@ -26,6 +27,9 @@ class NavDrawer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final screenheight =
+        MediaQuery.of(context).size.height - MediaQuery.of(context).padding.top;
+    final screenwidth = MediaQuery.of(context).size.width;
     return Drawer(
       child: Container(
         padding: const EdgeInsets.only(top: 20.0),
@@ -57,7 +61,14 @@ class NavDrawer extends StatelessWidget {
                     ),
                   ],
                 ),
-                Image.asset(dp),
+
+                //circular dp
+                CircleAvatar(
+                  radius: 30.0,
+                  backgroundImage: AssetImage("images/company2.jpeg"),
+                  backgroundColor: Colors.transparent,
+                ),
+
                 SizedBox(height: 40.0),
                 Padding(
                   padding: const EdgeInsets.all(8.0),
@@ -85,9 +96,19 @@ class NavDrawer extends StatelessWidget {
                                     'Welcome to jamalik',
                                     style: TextStyle(color: Colors.white),
                                   ),
-                                  Text(
-                                    'Edit Profile',
-                                    style: TextStyle(color: Colors.white),
+                                  GestureDetector(
+                                    onTap: () => {
+                                      Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                          builder: (context) => Profile(),
+                                        ),
+                                      )
+                                    },
+                                    child: Text(
+                                      'Edit Profile',
+                                      style: TextStyle(color: Colors.white),
+                                    ),
                                   ),
                                 ],
                               ),
@@ -272,6 +293,7 @@ class NavDrawer extends StatelessWidget {
                     )
                   },
                 ),
+                
 
                 //                 ListTile(
                 //   title: Text(

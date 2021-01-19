@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:jamalik/APIs/signupApi.dart';
 import 'package:jamalik/Buttons.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:jamalik/Ui/Payment.dart';
 import 'package:jamalik/Ui/login.dart';
 import 'package:jamalik/widgets/TF.dart';
@@ -12,24 +14,49 @@ class GettingStarted extends StatefulWidget {
 }
 
 class GettingStartedState extends State<GettingStarted> {
-  bool valid = false;
+  String gender = 'M';
   int radioValue = 0;
+  bool rememberMe = false;
+  bool valid = true;
+  bool isloading = false;
+
+  //confirmpassword textfield
+  final TextEditingController _confirmpasswordcontroller =
+      new TextEditingController();
+
+  final TextEditingController _emailcontroller = new TextEditingController();
   double _finalresult = 0.0;
+  //firstname textfield
+  final TextEditingController _firstnamecontroller =
+      new TextEditingController();
+
   String _formattedtext = "";
+  //lastname textfield
+  final TextEditingController _lastnamecontroller = new TextEditingController();
+
+  //password textfield
+  final TextEditingController _passwordcontroller = new TextEditingController();
+
+  //phone no textfield
+  final TextEditingController _phonenocontroller = new TextEditingController();
+
+  // final TextEditingController _phonenocontroller = new TextEditingController();
+
 //method for radio button
   void handleRadioValueChanged(int value) {
     setState(() {
       radioValue = value;
       switch (radioValue) {
         case 0:
+          gender = "M";
+          break;
 
         case 1:
+          gender = "F";
+          break;
       }
     });
   }
-
-  //method for check box
-  bool rememberMe = false;
 
   void _onRememberMeChanged(bool newValue) => setState(() {
         rememberMe = newValue;
@@ -43,6 +70,7 @@ class GettingStartedState extends State<GettingStarted> {
 
   @override
   Widget build(BuildContext context) {
+    //print(_usercontroller);
     final screenheight =
         MediaQuery.of(context).size.height - MediaQuery.of(context).padding.top;
     final screenwidth = MediaQuery.of(context).size.width;
@@ -112,18 +140,20 @@ class GettingStartedState extends State<GettingStarted> {
                                   left:
                                       MediaQuery.of(context).size.width * 0.04,
                                 ),
-                                child: Text("Full Name"),
+                                child: Text("First Name"),
                               ),
                               SizedBox(
                                 height:
                                     MediaQuery.of(context).size.height * 0.02,
                               ),
                               TF(
-                                controller: null,
-                                hintText: 'Aish',
+                                controller: _firstnamecontroller,
+                                hintText: 'Zeeshan',
                                 // isPassword: true,
                                 prefixIcon: Icons.person_outline,
-                                suffixIcon: valid ? Icons.check_box : null,
+                                suffixIcon: _firstnamecontroller.text.isNotEmpty
+                                    ? Icons.check_circle
+                                    : null,
                                 tfColor: Colors.grey.shade300,
                               ),
                               Padding(
@@ -138,11 +168,13 @@ class GettingStartedState extends State<GettingStarted> {
                                     MediaQuery.of(context).size.height * 0.02,
                               ),
                               TF(
-                                controller: null,
-                                hintText: '**********',
+                                controller: _lastnamecontroller,
+                                hintText: 'Yaseen',
                                 // isPassword: true,
                                 prefixIcon: Icons.person_outline,
-                                suffixIcon: valid ? Icons.check_box : null,
+                                suffixIcon: _lastnamecontroller.text.isNotEmpty
+                                    ? Icons.check_circle
+                                    : null,
                                 tfColor: Colors.grey.shade300,
                               ),
                               Padding(
@@ -157,11 +189,36 @@ class GettingStartedState extends State<GettingStarted> {
                                     MediaQuery.of(context).size.height * 0.02,
                               ),
                               TF(
-                                controller: null,
+                                controller: _phonenocontroller,
                                 hintText: '(+974) 555 555 555',
                                 // isPassword: true,
+                                isnumber: true,
                                 prefixIcon: Icons.phone_android,
-                                suffixIcon: valid ? Icons.check_box : null,
+                                suffixIcon: _phonenocontroller.text.length == 8
+                                    ? Icons.check_circle
+                                    : null,
+                                tfColor: Colors.grey.shade300,
+                              ),
+                              Padding(
+                                padding: EdgeInsets.only(
+                                  left:
+                                      MediaQuery.of(context).size.width * 0.04,
+                                ),
+                                child: Text("Email"),
+                              ),
+                              SizedBox(
+                                height:
+                                    MediaQuery.of(context).size.height * 0.02,
+                              ),
+                              TF(
+                                controller: _emailcontroller,
+                                hintText: 'z.yasin@agilesolutions.com',
+                                // isPassword: true,
+                                isnumber: false,
+                                prefixIcon: Icons.mail,
+                                suffixIcon: _emailcontroller.text.length == 8
+                                    ? Icons.check_circle
+                                    : null,
                                 tfColor: Colors.grey.shade300,
                               ),
                               new Row(
@@ -199,11 +256,13 @@ class GettingStartedState extends State<GettingStarted> {
                                     MediaQuery.of(context).size.height * 0.02,
                               ),
                               TF(
-                                controller: null,
+                                controller: _passwordcontroller,
                                 hintText: '**********',
                                 isPassword: true,
                                 prefixIcon: Icons.phone_android,
-                                suffixIcon: valid ? Icons.check_box : null,
+                                suffixIcon: _passwordcontroller.text.length >= 8
+                                    ? Icons.check_circle
+                                    : null,
                                 tfColor: Colors.grey.shade300,
                               ),
                               Padding(
@@ -218,11 +277,15 @@ class GettingStartedState extends State<GettingStarted> {
                                     MediaQuery.of(context).size.height * 0.02,
                               ),
                               TF(
-                                controller: null,
+                                controller: _confirmpasswordcontroller,
                                 hintText: '**********',
                                 isPassword: true,
                                 prefixIcon: Icons.phone_android,
-                                suffixIcon: valid ? Icons.check_box : null,
+                                suffixIcon: (_passwordcontroller.text ==
+                                            _confirmpasswordcontroller.text) &&
+                                        (_passwordcontroller.text.isNotEmpty)
+                                    ? Icons.check_circle
+                                    : null,
                                 tfColor: Colors.grey.shade300,
                               ),
                               Row(
@@ -278,16 +341,155 @@ class GettingStartedState extends State<GettingStarted> {
                         SizedBox(
                           height: MediaQuery.of(context).size.height * 0.02,
                         ),
-                        PinkButtons(
-                          TextColor: Colors.white,
-                          Buttontext: "SIGN UP",
-                          onpress: () => {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(builder: (context) => login()),
-                            )
-                          },
-                        ),
+                        !isloading
+                            ? PinkButtons(
+                                TextColor: Colors.white,
+                                Buttontext: "SIGN UP",
+                                onpress: () => {
+                                  if (_firstnamecontroller.text.isEmpty)
+                                    {
+                                      Fluttertoast.showToast(
+                                          msg: "First name cannot be Empty",
+                                          toastLength: Toast.LENGTH_SHORT,
+                                          gravity: ToastGravity.CENTER,
+                                          timeInSecForIosWeb: 1,
+                                          backgroundColor: Colors.red,
+                                          textColor: Colors.white,
+                                          fontSize: 16.0),
+                                    }
+                                  else if (_lastnamecontroller.text.isEmpty)
+                                    {
+                                      Fluttertoast.showToast(
+                                          msg: "Last name cannot be Empty",
+                                          toastLength: Toast.LENGTH_SHORT,
+                                          gravity: ToastGravity.CENTER,
+                                          timeInSecForIosWeb: 1,
+                                          backgroundColor: Colors.red,
+                                          textColor: Colors.white,
+                                          fontSize: 16.0),
+                                    }
+                                  else if (_phonenocontroller.text.length <= 8)
+                                    {
+                                      Fluttertoast.showToast(
+                                          msg:
+                                              "Please Enter valid Phone number",
+                                          toastLength: Toast.LENGTH_SHORT,
+                                          gravity: ToastGravity.CENTER,
+                                          timeInSecForIosWeb: 1,
+                                          backgroundColor: Colors.red,
+                                          textColor: Colors.white,
+                                          fontSize: 16.0),
+                                    }
+                                  else if (_passwordcontroller.text.length < 8)
+                                    {
+                                      Fluttertoast.showToast(
+                                          msg:
+                                              "Password must be greater then 8",
+                                          toastLength: Toast.LENGTH_SHORT,
+                                          gravity: ToastGravity.CENTER,
+                                          timeInSecForIosWeb: 1,
+                                          backgroundColor: Colors.red,
+                                          textColor: Colors.white,
+                                          fontSize: 16.0),
+                                    }
+                                  else if (_passwordcontroller.text !=
+                                      _confirmpasswordcontroller.text)
+                                    {
+                                      Fluttertoast.showToast(
+                                          msg: "Passwords donot Match",
+                                          toastLength: Toast.LENGTH_SHORT,
+                                          gravity: ToastGravity.CENTER,
+                                          timeInSecForIosWeb: 1,
+                                          backgroundColor: Colors.red,
+                                          textColor: Colors.white,
+                                          fontSize: 16.0),
+                                    }
+                                  else if (_passwordcontroller.text !=
+                                      _confirmpasswordcontroller.text)
+                                    {
+                                      Fluttertoast.showToast(
+                                          msg: "Passwords donot Match",
+                                          toastLength: Toast.LENGTH_SHORT,
+                                          gravity: ToastGravity.CENTER,
+                                          timeInSecForIosWeb: 1,
+                                          backgroundColor: Colors.red,
+                                          textColor: Colors.white,
+                                          fontSize: 16.0),
+                                    }
+                                  else
+                                    {
+                                      setState(() {
+                                        isloading = true;
+                                      }),
+                                      Signup()
+                                          .signup(
+                                              firstName:
+                                                  _firstnamecontroller.text,
+                                              lastName:
+                                                  _lastnamecontroller.text,
+                                              email: _emailcontroller.text,
+                                              gender: this.gender,
+                                              password:
+                                                  _passwordcontroller.text,
+                                              phonenumber:
+                                                  _phonenocontroller.text)
+                                          .then((value) => {
+                                                    if (value.firstName != null)
+                                                      {
+                                                        setState(() {
+                                                          isloading = false;
+                                                        }),
+                                                        // StoreProvider.of<Appstate>(context)
+                                                        //     .dispatch(MyUser(value.user)),
+                                                        print(value),
+                                                        Fluttertoast.showToast(
+                                                            msg: 'Sign up Successfull with username : ' +
+                                                                value.firstName
+                                                                    .toString()),
+
+                                                        Navigator.push(
+                                                          context,
+                                                          MaterialPageRoute(
+                                                              builder:
+                                                                  (context) =>
+                                                                      login()),
+                                                        )
+                                                      }
+                                                    else
+                                                      {
+                                                        setState(() {
+                                                          isloading = false;
+                                                        }),
+                                                        Fluttertoast.showToast(
+                                                            msg:
+                                                                'Failed to signup ')
+                                                      },
+                                                    print(value.toString()),
+                                                  }
+
+                                              // Navigator.push(
+                                              //   context,
+                                              //   MaterialPageRoute(
+                                              //       builder: (context) => Otpauthentication()),
+                                              // )
+                                              )
+                                    },
+
+                                  // print(_firstnamecontroller.text.length),
+                                  // print(_lastnamecontroller.text),
+                                  // print(_passwordcontroller.text),
+
+                                  // Navigator.push(
+                                  //   context,
+                                  //   MaterialPageRoute(builder: (context) => login()),
+                                  // )
+                                },
+                              )
+                            : Container(
+                                child: Center(
+                                  child: CircularProgressIndicator(),
+                                ),
+                              ),
                         SizedBox(
                           height: MediaQuery.of(context).size.height * 0.07,
                         ),

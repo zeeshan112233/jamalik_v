@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:jamalik/Ui/FAQ.dart';
+import 'package:flutter_redux/flutter_redux.dart';
 import 'package:jamalik/Ui/Gakhar.dart';
 import 'package:jamalik/Ui/GettingStarted.dart';
 import 'package:jamalik/Ui/Otpauthentication.dart';
@@ -14,14 +16,43 @@ import 'package:jamalik/Ui/Servicesscreen.dart';
 import 'package:jamalik/Ui/Verifyidentity.dart';
 import 'package:jamalik/Ui/home_2.dart';
 import 'package:jamalik/Ui/login.dart';
+import 'package:jamalik/redux/model/app_state.dart';
+import 'package:jamalik/redux/reducers.dart';
 import 'package:jamalik/widgets/Serviceswidget.dart';
+import 'package:redux/redux.dart';
 import './Ui/welcome_home.dart';
-import 'package:jamalik/Ui/dashboard.dart';
+import 'package:jamalik/Ui/Checkout.dart';
 
-void main() => runApp(new MaterialApp(
-      title: "Welcome",
-      home: new dashboard(),//SplashScreen(), //welcome class define in ui folder
-    ));
+
+void main() {
+  final _initialState = Appstate();
+  final Store<Appstate> _store =
+      Store<Appstate>(reducer, initialState: _initialState);
+
+  runApp(MyApp(store: _store));
+}
+
+class MyApp extends StatelessWidget {
+  final Store<Appstate> store;
+  MyApp({this.store});
+  // This widget is the root of your application.
+  @override
+  Widget build(BuildContext context) {
+    return StoreProvider<Appstate>(
+      store: store,
+      child: MaterialApp(
+        title: "Welcome",
+        home: new SplashScreen(),
+        //welcome class define in ui folder
+      ),
+    );
+  }
+}
+
+// void main() => runApp(new MaterialApp(
+//       title: "Welcome",
+//       home: new GettingStarted(), //welcome class define in ui folder
+//     ));
 
 class SplashScreen extends StatefulWidget {
   @override

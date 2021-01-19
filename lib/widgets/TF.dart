@@ -13,6 +13,7 @@ class TF extends StatelessWidget {
     this.readOnly,
     this.borderColor,
     this.tfColor,
+    this.isnumber = false,
   });
 
   final TextEditingController controller;
@@ -23,14 +24,17 @@ class TF extends StatelessWidget {
   final bool isPassword;
   final bool enabled;
   final bool readOnly;
+
   final Color borderColor;
   final Color tfColor;
+  bool isnumber = false;
 
   @override
   Widget build(BuildContext context) {
     return Container(
       child: TextFormField(
         controller: controller,
+        keyboardType: isnumber ? TextInputType.number : TextInputType.text,
         readOnly: null == readOnly ? false : true,
         obscureText: null == isPassword ? false : true,
         decoration: InputDecoration(
@@ -56,9 +60,17 @@ class TF extends StatelessWidget {
             ),
           ),
           hintText: null == hintText ? '' : hintText,
-          helperText: null == helpText ? '' : helpText,
-          prefixIcon: null == prefixIcon ? null : Icon(prefixIcon),
-          suffixIcon: null == suffixIcon ? null : Icon(suffixIcon),
+          helperText: helpText == null ? '' : helpText,
+          prefixIcon: prefixIcon == null ? null : Icon(prefixIcon),
+          suffixIcon: null == suffixIcon
+              ? Icon(
+                  Icons.close,
+                  color: Colors.red,
+                )
+              : Icon(
+                  suffixIcon,
+                  color: Colors.pink.shade300,
+                ),
           enabled: null == enabled ? true : false,
         ),
       ),

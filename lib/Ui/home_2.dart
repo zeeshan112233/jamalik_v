@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_redux/flutter_redux.dart';
 import 'package:jamalik/Ui/AR.dart';
 import 'package:jamalik/Ui/notification.dart';
+import 'package:jamalik/redux/model/app_state.dart';
 import 'package:jamalik/widgets/dotcard.dart';
 import 'package:jamalik/widgets/header_white.dart';
 import 'package:jamalik/widgets/TF.dart';
 import 'package:jamalik/widgets/NavDrawer.dart';
+import 'package:touchable_opacity/touchable_opacity.dart';
 
 class home_2 extends StatefulWidget {
   @override
@@ -12,21 +15,8 @@ class home_2 extends StatefulWidget {
 }
 
 class _State extends State<home_2> {
-  String name = "Aisha";
-  bool Beauty = true;
-  bool Health = false;
-  bool other = false;
-
-  var services = [
-    {'text': "Hairdressing Services", 'customimage': "images/kainchi.png"},
-    {'text': "Cosmetology", 'customimage': "images/cos.png"},
-    {'text': "Body Care", 'customimage': "images/leg.png"},
-    {'text': "Spa Procedures", 'customimage': "images/spa.png"},
-    {'text': "Nail Polish", 'customimage': "images/nail.png"},
-    {'text': "Tanning Studios", 'customimage': "images/tan.png"},
-    {'text': "Make Up ", 'customimage': "images/make.png"},
-  ];
-
+  bool pending = false;
+  bool completed = false;
   @override
   Widget build(BuildContext context) {
     final screenheight =
@@ -37,40 +27,55 @@ class _State extends State<home_2> {
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 8.0),
         child: Scaffold(
+          backgroundColor: Colors.white,
           drawer: NavDrawer(
-            dp: "images/logo.png",
+            dp: "images/company2.jpeg",
             name: "Jamalik",
           ),
-          appBar: AppBar(
-              leading: Builder(
-                builder: (BuildContext context) {
-                  return IconButton(
-                    icon: new Image.asset('images/menuu.png'),
-                    onPressed: () {
-                      Scaffold.of(context).openDrawer();
-                    },
-                    tooltip:
-                        MaterialLocalizations.of(context).openAppDrawerTooltip,
-                  );
-                },
-              ),
-              backgroundColor: Colors.white,
-              actions: <Widget>[
-                GestureDetector(
-                  onTap: () {
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => notification()));
-                  },
-                  child: IconButton(
-                    icon: new Image.asset('images/not.png'),
-                  ),
+          appBar: PreferredSize(
+            preferredSize: Size.fromHeight(screenheight * 0.06),
+            child: AppBar(
+                title: Center(
+                  child: StoreConnector<Appstate, Appstate>(
+                      converter: (store) => store.state,
+                      builder: (context, state) {
+                        return Text(
+                          state.user.firstName,
+                          style: TextStyle(
+                              color: Colors.black, fontWeight: FontWeight.w600),
+                        );
+                      }),
                 ),
-                SizedBox(
-                  width: 10,
-                )
-              ]),
+                leading: Builder(
+                  builder: (BuildContext context) {
+                    return IconButton(
+                      icon: new Image.asset('images/menuu.png'),
+                      onPressed: () {
+                        Scaffold.of(context).openDrawer();
+                      },
+                      tooltip: MaterialLocalizations.of(context)
+                          .openAppDrawerTooltip,
+                    );
+                  },
+                ),
+                backgroundColor: Colors.white,
+                actions: <Widget>[
+                  GestureDetector(
+                    onTap: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => notification()));
+                    },
+                    child: IconButton(
+                      icon: new Image.asset('images/not.png'),
+                    ),
+                  ),
+                  SizedBox(
+                    width: 10,
+                  )
+                ]),
+          ),
 
           // drawer: NavDrawer(
           //   dp: "images/logo.png",
@@ -80,352 +85,406 @@ class _State extends State<home_2> {
             height: screenheight - kToolbarHeight,
             child: Padding(
               padding: EdgeInsets.symmetric(
-                horizontal: MediaQuery.of(context).size.width * 0.02,
+                horizontal: MediaQuery.of(context).size.width * 0.07,
+                vertical: MediaQuery.of(context).size.width * 0.08,
               ),
               child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  SizedBox(
-                    height: 10,
-                  ),
-
-                  TF(
-                    controller: null,
-                    hintText: 'Rawalpindi',
-                    prefixIcon: Icons.location_pin,
-                    suffixIcon: Icons.search,
-                    tfColor: Colors.grey.shade300,
-                  ),
-                  Text(
-                    "Hey, $name",
-                    style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
-                  ),
-                  Text("Welcome to Jamalik"),
-                  SizedBox(height: 5),
-                  Center(
-                    child: ClipRRect(
-                        borderRadius: BorderRadius.circular(10.0),
-                        child: Image.asset(
-                          "images/home_2pic.png",
-                          width: screenwidth,
-                          height: screenheight * 0.25,
-                          fit: BoxFit.fill,
-                        )),
-                  ),
-
-                  //............................................button1..................................................
-                  Padding(
-                    padding:
-                        const EdgeInsets.only(left: 8.0, right: 8, top: 13),
-                    child: Container(
-                      child: SingleChildScrollView(
-                        scrollDirection: Axis.horizontal,
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceAround,
-                          children: [
-                            FlatButton(
-                              padding: EdgeInsets.symmetric(
-                                  vertical: 5.0, horizontal: 1),
-                              onPressed: () => {
-                                setState(() {
-                                  Beauty = true;
-                                  Health = false;
-                                  other = false;
-
-                                  services = [
-                                    {
-                                      'text': "Hairdressing Services",
-                                      'customimage': "images/kainchi.png"
-                                    },
-                                    {
-                                      'text': "Cosmetology",
-                                      'customimage': "images/cos.png"
-                                    },
-                                    {
-                                      'text': "Body Care",
-                                      'customimage': "images/leg.png"
-                                    },
-                                    {
-                                      'text': "Spa Procedures",
-                                      'customimage': "images/spa.png"
-                                    },
-                                    {
-                                      'text': "Nail Polish",
-                                      'customimage': "images/nail.png"
-                                    },
-                                    {
-                                      'text': "Tanning Studios",
-                                      'customimage': "images/tan.png"
-                                    },
-                                    {
-                                      'text': "Make Up ",
-                                      'customimage': "images/make.png"
-                                    },
-                                  ];
-                                })
-                              },
-                              child: Container(
-                                decoration: BoxDecoration(
-                                  border: Border.all(
-                                    color: const Color(0xff982877),
-                                  ),
-                                  borderRadius: BorderRadius.all(
-                                      Radius.circular(
-                                          50.0) //                 <--- border radius here
-                                      ),
-                                ),
-                                child: Container(
-                                  padding: EdgeInsets.symmetric(
-                                      vertical: 8, horizontal: 30.0),
-                                  decoration: ShapeDecoration(
-                                    shape: StadiumBorder(),
-                                    gradient: Beauty
-                                        ? LinearGradient(
-                                            colors: [
-                                              Colors.purple.shade500,
-                                              Colors.pink.shade200,
-                                            ],
-                                            begin: Alignment.topCenter,
-                                            end: Alignment.bottomCenter,
-                                          )
-                                        : LinearGradient(
-                                            colors: [
-                                              Colors.white,
-                                              Colors.white,
-                                            ],
-                                            begin: Alignment.topCenter,
-                                            end: Alignment.bottomCenter,
-                                          ),
-                                  ),
-                                  child: Row(
-                                    children: [
-                                      Beauty
-                                          ? Image.asset(
-                                              "images/beautybtnwhite.png")
-                                          : Image.asset(
-                                              "images/beautybtnpink.png"),
-                                      SizedBox(
-                                        width:
-                                            MediaQuery.of(context).size.width *
-                                                0.05,
-                                      ),
-                                      Text(
-                                        "Beauty",
-                                        style: Beauty
-                                            ? TextStyle(
-                                                color: Colors.white,
-                                                fontFamily: "DM Sans",
-                                                fontSize: 14.0,
-                                                fontWeight: FontWeight.w400)
-                                            : TextStyle(
-                                                color: Colors.black,
-                                                fontFamily: "DM Sans",
-                                                fontSize: 14.0,
-                                                fontWeight: FontWeight.w400,
-                                              ),
-                                      ),
-                                    ],
-                                  ),
-                                ),
-                              ),
+                  Column(
+                    children: [
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Container(
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(20),
+                              color: Colors.green,
+                              boxShadow: [],
                             ),
-                            SizedBox(
-                              width: 20,
-                            ),
-                            //.......................................Button2..................................................
-                            FlatButton(
-                              padding: EdgeInsets.symmetric(
-                                  vertical: 5.0, horizontal: 1),
-                              onPressed: () => {
-                                setState(() {
-                                  Beauty = false;
-                                  Health = true;
-                                  other = false;
-                                  services = [
-                                    {
-                                      'text': "Massage",
-                                      'customimage': "images/massage.png"
-                                    },
-                                    {
-                                      'text': "Sport Training",
-                                      'customimage': "images/sports.png"
-                                    },
-                                    {
-                                      'text': "Private Doctor",
-                                      'customimage': "images/doctor.png"
-                                    },
-                                    {
-                                      'text': "Diagnosis / Examination",
-                                      'customimage': "images/exam.png"
-                                    },
-                                  ];
-                                })
-                              },
-                              child: Container(
-                                decoration: BoxDecoration(
-                                  border: Border.all(
-                                    color: const Color(0xff982877),
-                                  ),
-                                  borderRadius: BorderRadius.all(
-                                      Radius.circular(
-                                          50.0) //                 <--- border radius here
-                                      ),
+                            height: 80,
+                            width: 140,
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Row(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    Icon(
+                                      Icons.access_alarm,
+                                      color: Colors.black,
+                                      size: 30.0,
+                                    ),
+                                    SizedBox(width: 5),
+                                    Text("Sales Today"),
+                                  ],
                                 ),
-                                child: Container(
-                                  padding: EdgeInsets.symmetric(
-                                      vertical: 8, horizontal: 30.0),
-                                  decoration: ShapeDecoration(
-                                    shape: StadiumBorder(),
-                                    gradient: Health
-                                        ? LinearGradient(
-                                            colors: [
-                                              Colors.purple.shade500,
-                                              Colors.pink.shade200,
-                                            ],
-                                            begin: Alignment.topCenter,
-                                            end: Alignment.bottomCenter,
-                                          )
-                                        : LinearGradient(
-                                            colors: [
-                                              Colors.white,
-                                              Colors.white,
-                                            ],
-                                            begin: Alignment.topCenter,
-                                            end: Alignment.bottomCenter,
-                                          ),
-                                  ),
-                                  child: Row(
-                                    children: [
-                                      Health
-                                          ? Image.asset(
-                                              "images/healthbtnwhite.png")
-                                          : Image.asset(
-                                              "images/healthbtnpink.png"),
-                                      SizedBox(
-                                        width:
-                                            MediaQuery.of(context).size.width *
-                                                0.05,
-                                      ),
-                                      Text(
-                                        "Health",
-                                        style: Health
-                                            ? TextStyle(
-                                                color: Colors.white,
-                                                fontFamily: "DM Sans",
-                                                fontSize: 14.0,
-                                                fontWeight: FontWeight.w400)
-                                            : TextStyle(
-                                                color: Colors.black,
-                                                fontFamily: "DM Sans",
-                                                fontSize: 14.0,
-                                                fontWeight: FontWeight.w400,
-                                              ),
-                                      ),
-                                    ],
-                                  ),
+                                Row(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    Text("\$ 300"),
+                                  ],
                                 ),
-                              ),
+                              ],
                             ),
-                            SizedBox(
-                              width: 20,
+                          ),
+                          //weekly
+                          Container(
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(20),
+                              color: Colors.green,
+                              boxShadow: [],
                             ),
-                            FlatButton(
-                              padding: EdgeInsets.symmetric(
-                                  vertical: 5.0, horizontal: 1),
-                              onPressed: () => {
-                                setState(() {
-                                  Beauty = false;
-                                  Health = false;
-                                  other = true;
-
-                                  services = [
-                                    {
-                                      'text': "Consultaion",
-                                      'customimage': "images/consult.png"
-                                    },
-                                  ];
-                                })
-                              },
-                              child: Container(
-                                decoration: BoxDecoration(
-                                  border: Border.all(
-                                    color: const Color(0xff982877),
-                                  ),
-                                  borderRadius: BorderRadius.all(
-                                      Radius.circular(
-                                          50.0) //                 <--- border radius here
-                                      ),
+                            height: 80,
+                            width: 140,
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Row(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    Icon(
+                                      Icons.alarm_on,
+                                      color: Colors.black,
+                                      size: 30.0,
+                                    ),
+                                    SizedBox(width: 5),
+                                    Text("Weekly Sales"),
+                                  ],
                                 ),
-                                child: Container(
-                                  padding: EdgeInsets.symmetric(
-                                      vertical: 8, horizontal: 30.0),
-                                  decoration: ShapeDecoration(
-                                    shape: StadiumBorder(),
-                                    gradient: other
-                                        ? LinearGradient(
-                                            colors: [
-                                              Colors.purple.shade500,
-                                              Colors.pink.shade200,
-                                            ],
-                                            begin: Alignment.topCenter,
-                                            end: Alignment.bottomCenter,
-                                          )
-                                        : LinearGradient(
-                                            colors: [
-                                              Colors.white,
-                                              Colors.white,
-                                            ],
-                                            begin: Alignment.topCenter,
-                                            end: Alignment.bottomCenter,
-                                          ),
-                                  ),
-                                  child: Row(
-                                    children: [
-                                      other
-                                          ? Image.asset(
-                                              "images/healthbtnwhite.png")
-                                          : Image.asset(
-                                              "images/healthbtnpink.png"),
-                                      SizedBox(
-                                        width:
-                                            MediaQuery.of(context).size.width *
-                                                0.05,
-                                      ),
-                                      Text(
-                                        "Others",
-                                        style: other
-                                            ? TextStyle(
-                                                color: Colors.white,
-                                                fontFamily: "DM Sans",
-                                                fontSize: 14.0,
-                                                fontWeight: FontWeight.w400)
-                                            : TextStyle(
-                                                color: Colors.black,
-                                                fontFamily: "DM Sans",
-                                                fontSize: 14.0,
-                                                fontWeight: FontWeight.w400,
-                                              ),
-                                      ),
-                                    ],
-                                  ),
+                                Row(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    Text("\$ 300"),
+                                  ],
                                 ),
-                              ),
+                              ],
                             ),
-                          ],
-                        ),
+                          ),
+                        ],
                       ),
-                    ),
+                      SizedBox(
+                        height: MediaQuery.of(context).size.width * 0.05,
+                      ),
+                      //Monthly
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Container(
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(20),
+                              color: Colors.green,
+                              boxShadow: [],
+                            ),
+                            height: 80,
+                            width: 140,
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Row(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    Icon(
+                                      Icons.addchart_rounded,
+                                      color: Colors.black,
+                                      size: 30.0,
+                                    ),
+                                    SizedBox(width: 5),
+                                    Text("Monthly Sales"),
+                                  ],
+                                ),
+                                Row(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    Text("\$ 300"),
+                                  ],
+                                ),
+                              ],
+                            ),
+                          ),
+                          Container(
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(20),
+                              color: Colors.green,
+                              boxShadow: [],
+                            ),
+                            height: 80,
+                            width: 140,
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Row(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    Icon(
+                                      Icons.access_alarm,
+                                      color: Colors.black,
+                                      size: 30.0,
+                                    ),
+                                    SizedBox(width: 5),
+                                    Text("Daily Sales"),
+                                  ],
+                                ),
+                                Row(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    Text("\$ 300"),
+                                  ],
+                                ),
+                              ],
+                            ),
+                          ),
+                        ],
+                      ),
+                    ],
                   ),
-
+                  SizedBox(
+                    height: MediaQuery.of(context).size.height * 0.05,
+                  ),
                   Expanded(
                     child: Container(
-                      child: ListView.builder(
-                        itemCount: services.length,
-                        itemBuilder: (context, index) {
-                          return dotcard(
-                              text: services[index]['text'],
-                              customimage: services[index]['customimage']);
-                        },
+                      // height: MediaQuery.of(context).size.height*0.4,
+                      color: Colors.grey[100],
+                      child: Column(
+                        children: [
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Text(
+                                'Bookings',
+                                style: TextStyle(
+                                  fontSize: 20,
+                                  fontWeight: FontWeight.w700,
+                                ),
+                              ),
+                            ],
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.symmetric(
+                              horizontal: 10,
+                              vertical: 10,
+                            ),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceAround,
+                              children: [
+                                FlatButton(
+                                  padding: EdgeInsets.symmetric(
+                                      vertical: 3.0, horizontal: 1),
+                                  onPressed: () => {
+                                    setState(() {
+                                      pending = true;
+                                      completed = false;
+                                    })
+                                  },
+                                  child: Container(
+                                    decoration: BoxDecoration(
+                                      border: Border.all(
+                                        color: const Color(0xff982877),
+                                      ),
+                                      borderRadius: BorderRadius.all(
+                                          Radius.circular(
+                                              50.0) //                 <--- border radius here
+                                          ),
+                                    ),
+                                    child: Container(
+                                      padding: EdgeInsets.symmetric(
+                                          vertical: 4, horizontal: 15.0),
+                                      decoration: ShapeDecoration(
+                                        shape: StadiumBorder(),
+                                        gradient: pending
+                                            ? LinearGradient(
+                                                colors: [
+                                                  Colors.purple.shade500,
+                                                  Colors.pink.shade200,
+                                                ],
+                                                begin: Alignment.topCenter,
+                                                end: Alignment.bottomCenter,
+                                              )
+                                            : LinearGradient(
+                                                colors: [
+                                                  Colors.white,
+                                                  Colors.white,
+                                                ],
+                                                begin: Alignment.topCenter,
+                                                end: Alignment.bottomCenter,
+                                              ),
+                                      ),
+                                      child: Row(
+                                        children: [
+                                          pending
+                                              ? Image.asset(
+                                                  "images/beautybtnwhite.png")
+                                              : Image.asset(
+                                                  "images/beautybtnpink.png"),
+                                          SizedBox(
+                                            width: MediaQuery.of(context)
+                                                    .size
+                                                    .width *
+                                                0.05,
+                                          ),
+                                          Text(
+                                            "pending",
+                                            style: pending
+                                                ? TextStyle(
+                                                    color: Colors.white,
+                                                    fontFamily: "DM Sans",
+                                                    fontSize: 14.0,
+                                                    fontWeight: FontWeight.w400)
+                                                : TextStyle(
+                                                    color: Colors.black,
+                                                    fontFamily: "DM Sans",
+                                                    fontSize: 14.0,
+                                                    fontWeight: FontWeight.w400,
+                                                  ),
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                                FlatButton(
+                                  padding: EdgeInsets.symmetric(
+                                      vertical: 3.0, horizontal: 1),
+                                  onPressed: () => {
+                                    setState(
+                                      () {
+                                        pending = false;
+                                        completed = true;
+                                      },
+                                    ),
+                                  },
+                                  child: Container(
+                                    decoration: BoxDecoration(
+                                      border: Border.all(
+                                        color: const Color(0xff982877),
+                                      ),
+                                      borderRadius: BorderRadius.all(
+                                          Radius.circular(
+                                              50.0) //                 <--- border radius here
+                                          ),
+                                    ),
+                                    child: Container(
+                                      padding: EdgeInsets.symmetric(
+                                          vertical: 4, horizontal: 15.0),
+                                      decoration: ShapeDecoration(
+                                        shape: StadiumBorder(),
+                                        gradient: completed
+                                            ? LinearGradient(
+                                                colors: [
+                                                  Colors.purple.shade500,
+                                                  Colors.pink.shade200,
+                                                ],
+                                                begin: Alignment.topCenter,
+                                                end: Alignment.bottomCenter,
+                                              )
+                                            : LinearGradient(
+                                                colors: [
+                                                  Colors.white,
+                                                  Colors.white,
+                                                ],
+                                                begin: Alignment.topCenter,
+                                                end: Alignment.bottomCenter,
+                                              ),
+                                      ),
+                                      child: Row(
+                                        children: [
+                                          completed
+                                              ? Image.asset(
+                                                  "images/beautybtnwhite.png")
+                                              : Image.asset(
+                                                  "images/beautybtnpink.png"),
+                                          SizedBox(
+                                            width: MediaQuery.of(context)
+                                                    .size
+                                                    .width *
+                                                0.05,
+                                          ),
+                                          Text(
+                                            "Completed",
+                                            style: completed
+                                                ? TextStyle(
+                                                    color: Colors.white,
+                                                    fontFamily: "DM Sans",
+                                                    fontSize: 14.0,
+                                                    fontWeight: FontWeight.w400)
+                                                : TextStyle(
+                                                    color: Colors.black,
+                                                    fontFamily: "DM Sans",
+                                                    fontSize: 14.0,
+                                                    fontWeight: FontWeight.w400,
+                                                  ),
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                          Expanded(
+                            child: Container(
+                              height: 30,
+                              color: Colors.amber,
+                              child: pending
+                                  ? Padding(
+                                      padding: const EdgeInsets.symmetric(
+                                        horizontal: 20,
+                                        vertical: 10,
+                                      ),
+                                      child: Column(
+                                        children: [
+                                          Row(
+                                            children: [
+                                              Icon(
+                                                Icons.access_alarm,
+                                                color: Colors.black,
+                                                size: 30.0,
+                                              ),
+                                              SizedBox(
+                                                width: 20,
+                                              ),
+                                              Expanded(
+                                                child: Container(
+                                                  child:
+                                                      Text("Pending Clicked"),
+                                                ),
+                                              ),
+                                            ],
+                                          ),
+                                        ],
+                                      ),
+                                    )
+                                  : Padding(
+                                      padding: const EdgeInsets.symmetric(
+                                        horizontal: 20,
+                                        vertical: 10,
+                                      ),
+                                      child: Column(
+                                        children: [
+                                          Row(
+                                            children: [
+                                              Icon(
+                                                Icons.access_alarm,
+                                                color: Colors.black,
+                                                size: 30.0,
+                                              ),
+                                              SizedBox(
+                                                width: 20,
+                                              ),
+                                              Expanded(
+                                                child: Container(
+                                                  child:
+                                                      Text("Completed Clicked"),
+                                                ),
+                                              ),
+                                            ],
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                            ),
+                          ),
+                        ],
                       ),
                     ),
                   ),

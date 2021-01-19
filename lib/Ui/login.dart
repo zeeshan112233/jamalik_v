@@ -1,8 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_redux/flutter_redux.dart';
+import 'package:jamalik/APIs/loginAPI.dart';
 import 'package:jamalik/Buttons.dart';
 import 'package:jamalik/Ui/Otpauthentication.dart';
+import 'package:jamalik/Ui/Profile.dart';
+import 'package:jamalik/Ui/home_2.dart';
+import 'package:jamalik/redux/actions.dart';
+import 'package:jamalik/redux/model/app_state.dart';
 import 'package:jamalik/widgets/TF.dart';
 import 'package:jamalik/widgets/ButtonsWidget.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 
 //New Class
 class login extends StatefulWidget {
@@ -11,7 +18,14 @@ class login extends StatefulWidget {
 }
 
 class _loginState extends State<login> {
+  bool isloading = false;
   bool passwordvalid = true;
+
+  //password textfield
+  final TextEditingController _passwordcontroller = new TextEditingController();
+
+  final TextEditingController _phonenocontroller = new TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     final screenheight =
@@ -89,12 +103,15 @@ class _loginState extends State<login> {
                                       MediaQuery.of(context).size.height * 0.02,
                                 ),
                                 TF(
-                                  controller: null,
-                                  hintText: '(+974) 55 555 555',
+                                  controller: _phonenocontroller,
+                                  hintText: '(+974) 555 555 555',
                                   // isPassword: true,
+                                  isnumber: true,
                                   prefixIcon: Icons.phone_android,
                                   suffixIcon:
-                                      passwordvalid ? Icons.person : null,
+                                      _phonenocontroller.text.length == 8
+                                          ? Icons.check_circle
+                                          : null,
                                   tfColor: Colors.grey.shade300,
                                 ),
                               ],
@@ -118,12 +135,14 @@ class _loginState extends State<login> {
                                       MediaQuery.of(context).size.height * 0.02,
                                 ),
                                 TF(
-                                  controller: null,
+                                  controller: _passwordcontroller,
                                   hintText: '**********',
-                                  // isPassword: true,
+                                  isPassword: true,
                                   prefixIcon: Icons.lock,
                                   suffixIcon:
-                                      passwordvalid ? Icons.person : null,
+                                      _passwordcontroller.text.length >= 8
+                                          ? Icons.check_circle
+                                          : null,
                                   tfColor: Colors.grey.shade300,
                                 ),
                               ],
@@ -150,23 +169,99 @@ class _loginState extends State<login> {
                           SizedBox(
                             height: MediaQuery.of(context).size.height * 0.04,
                           ),
-                          PinkButtons(
-                            Buttontext: "SIGN IN",
-                            TextColor: Colors.white,
-                            onpress: () => {
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) => Otpauthentication()),
-                              )
-                            },
-                          ),
+                          !isloading
+                              ? PinkButtons(
+                                  Buttontext: "SIGN IN",
+                                  TextColor: Colors.white,
+                                  onpress: () => {
+                                        if (_phonenocontroller.text.length <= 7)
+                                          {
+                                            Fluttertoast.showToast(
+                                                msg:
+                                                    "Please Enter valid Phone number",
+                                                toastLength: Toast.LENGTH_SHORT,
+                                                gravity: ToastGravity.CENTER,
+                                                timeInSecForIosWeb: 1,
+                                                backgroundColor: Colors.red,
+                                                textColor: Colors.white,
+                                                fontSize: 16.0),
+                                          }
+                                        else if (_passwordcontroller
+                                                .text.length <
+                                            6)
+                                          {
+                                            Fluttertoast.showToast(
+                                                msg:
+                                                    "Password must be greater then 8",
+                                                toastLength: Toast.LENGTH_SHORT,
+                                                gravity: ToastGravity.BOTTOM,
+                                                timeInSecForIosWeb: 1,
+                                                backgroundColor: Colors.red,
+                                                textColor: Colors.white,
+                                                fontSize: 16.0),
+                                          }
+                                        else
+                                          {
+                                            setState(() {
+                                              isloading = true;
+                                            }),
+                                            Login()
+                                                .login(
+                                                    password:
+                                                        _passwordcontroller
+                                                            .text,
+                                                    phonenumber:
+                                                        _phonenocontroller.text)
+                                                .then((value) => {
+                                                      if (value.firstName !=
+                                                          null)
+                                                        {
+                                                          setState(() {
+                                                            isloading = false;
+                                                          }),
+                                                          StoreProvider.of<
+                                                                      Appstate>(
+                                                                  context)
+                                                              .dispatch(MyUser(
+                                                                  value)),
+                                                          print(value),
+                                                          Fluttertoast.showToast(
+                                                              msg: 'Login Successfull with username : ' +
+                                                                  value
+                                                                      .firstName
+                                                                      .toString()),
+                                                          Navigator.push(
+                                                            context,
+                                                            MaterialPageRoute(
+                                                                builder:
+                                                                    (context) =>
+                                                                        home_2()),
+                                                          )
+                                                        }
+                                                      else
+                                                        {
+                                                          setState(() {
+                                                            isloading = false;
+                                                          }),
+                                                          Fluttertoast.showToast(
+                                                              msg:
+                                                                  'Failed to login ')
+                                                        },
+                                                      print(value.toString()),
+                                                    })
+                                          },
+                                      })
+                              : Container(
+                                  child: Center(
+                                    child: CircularProgressIndicator(),
+                                  ),
+                                ),
                           SizedBox(
                             height: MediaQuery.of(context).size.height * 0.02,
                           ),
                           WhiteButtons(
                             Buttontext: "Create Account",
-                            onpress: () => {print("hi")},
+                            onpress: () => {print("me bn rha hn")},
                           ),
                         ],
                       ),

@@ -23,8 +23,20 @@ class _dashboardState extends State<dashboard> {
   bool fri = false;
   bool sat = false;
   bool sun = false;
-  String starttime = "11:00";
-  String endtime = "22:00";
+  String monstarttime = "11:00";
+  String monendtime = "22:00";
+  String tuestarttime = "11:00";
+  String tueendtime = "22:00";
+  String wedstarttime = "11:00";
+  String wedendtime = "22:00";
+  String thursstarttime = "11:00";
+  String thursendtime = "22:00";
+  String fristarttime = "11:00";
+  String friendtime = "22:00";
+  String satstarttime = "11:00";
+  String satendtime = "22:00";
+  String sunstarttime = "11:00";
+  String sunendtime = "22:00";
   @override
   Widget build(BuildContext context) {
     return new MaterialApp(
@@ -788,7 +800,7 @@ class _dashboardState extends State<dashboard> {
                                     children: [
                                       mon
                                           ? Text(
-                                              starttime + " " + endtime,
+                                              monstarttime + " " + monendtime,
                                               style: TextStyle(
                                                 height: 1.5,
                                                 fontSize: 14.0,
@@ -822,7 +834,7 @@ class _dashboardState extends State<dashboard> {
                                                       hour: 22, minute: 9),
                                                   onStartChange: (start) {
                                                     setState(() {
-                                                      starttime = start.hour
+                                                      monstarttime = start.hour
                                                               .toString() +
                                                           " : " +
                                                           start.minute
@@ -830,18 +842,18 @@ class _dashboardState extends State<dashboard> {
                                                     });
 
                                                     print("start time is" +
-                                                        starttime);
+                                                        monstarttime);
                                                   },
                                                   onEndChange: (end) {
                                                     setState(() {
-                                                      endtime = end.hour
+                                                      monendtime = end.hour
                                                               .toString() +
                                                           " : " +
                                                           end.minute.toString();
                                                     });
 
                                                     print(
-                                                        "end time " + endtime);
+                                                        "end time " + monendtime);
                                                   },
                                                   interval:
                                                       Duration(minutes: 01),
@@ -947,7 +959,7 @@ class _dashboardState extends State<dashboard> {
                                     children: [
                                       tue
                                           ? Text(
-                                              starttime + " " + endtime,
+                                              tuestarttime + " " + tueendtime,
                                               style: TextStyle(
                                                 height: 1.5,
                                                 fontSize: 14.0,
@@ -981,7 +993,7 @@ class _dashboardState extends State<dashboard> {
                                                       hour: 22, minute: 9),
                                                   onStartChange: (start) {
                                                     setState(() {
-                                                      starttime = start.hour
+                                                      tuestarttime = start.hour
                                                               .toString() +
                                                           " : " +
                                                           start.minute
@@ -989,18 +1001,18 @@ class _dashboardState extends State<dashboard> {
                                                     });
 
                                                     print("start time is" +
-                                                        starttime);
+                                                        tuestarttime);
                                                   },
                                                   onEndChange: (end) {
                                                     setState(() {
-                                                      endtime = end.hour
+                                                      tueendtime = end.hour
                                                               .toString() +
                                                           " : " +
                                                           end.minute.toString();
                                                     });
 
                                                     print(
-                                                        "end time " + endtime);
+                                                        "end time " + tueendtime);
                                                   },
                                                   interval:
                                                       Duration(minutes: 01),
@@ -1106,7 +1118,7 @@ class _dashboardState extends State<dashboard> {
                                     children: [
                                       wed
                                           ? Text(
-                                              starttime + " " + endtime,
+                                              wedstarttime + " " + wedendtime,
                                               style: TextStyle(
                                                 height: 1.5,
                                                 fontSize: 14.0,
@@ -1140,7 +1152,7 @@ class _dashboardState extends State<dashboard> {
                                                       hour: 22, minute: 9),
                                                   onStartChange: (start) {
                                                     setState(() {
-                                                      starttime = start.hour
+                                                      wedstarttime = start.hour
                                                               .toString() +
                                                           " : " +
                                                           start.minute
@@ -1148,18 +1160,18 @@ class _dashboardState extends State<dashboard> {
                                                     });
 
                                                     print("start time is" +
-                                                        starttime);
+                                                        wedstarttime);
                                                   },
                                                   onEndChange: (end) {
                                                     setState(() {
-                                                      endtime = end.hour
+                                                      wedendtime = end.hour
                                                               .toString() +
                                                           " : " +
                                                           end.minute.toString();
                                                     });
 
                                                     print(
-                                                        "end time " + endtime);
+                                                        "end time " + wedendtime);
                                                   },
                                                   interval:
                                                       Duration(minutes: 01),
@@ -1266,7 +1278,7 @@ class _dashboardState extends State<dashboard> {
                                     children: [
                                       thurs
                                           ? Text(
-                                              starttime + " " + endtime,
+                                              thursstarttime + " " + thursendtime,
                                               style: TextStyle(
                                                 height: 1.5,
                                                 fontSize: 14.0,
@@ -1300,7 +1312,7 @@ class _dashboardState extends State<dashboard> {
                                                       hour: 22, minute: 9),
                                                   onStartChange: (start) {
                                                     setState(() {
-                                                      starttime = start.hour
+                                                      thursstarttime = start.hour
                                                               .toString() +
                                                           " : " +
                                                           start.minute
@@ -1308,18 +1320,18 @@ class _dashboardState extends State<dashboard> {
                                                     });
 
                                                     print("start time is" +
-                                                        starttime);
+                                                        thursstarttime);
                                                   },
                                                   onEndChange: (end) {
                                                     setState(() {
-                                                      endtime = end.hour
+                                                      thursendtime = end.hour
                                                               .toString() +
                                                           " : " +
                                                           end.minute.toString();
                                                     });
 
                                                     print(
-                                                        "end time " + endtime);
+                                                        "end time " + thursendtime);
                                                   },
                                                   interval:
                                                       Duration(minutes: 01),
@@ -1426,7 +1438,7 @@ class _dashboardState extends State<dashboard> {
                                     children: [
                                       fri
                                           ? Text(
-                                              starttime + " " + endtime,
+                                              fristarttime + " " + friendtime,
                                               style: TextStyle(
                                                 height: 1.5,
                                                 fontSize: 14.0,
@@ -1460,7 +1472,7 @@ class _dashboardState extends State<dashboard> {
                                                       hour: 22, minute: 9),
                                                   onStartChange: (start) {
                                                     setState(() {
-                                                      starttime = start.hour
+                                                      fristarttime = start.hour
                                                               .toString() +
                                                           " : " +
                                                           start.minute
@@ -1468,18 +1480,18 @@ class _dashboardState extends State<dashboard> {
                                                     });
 
                                                     print("start time is" +
-                                                        starttime);
+                                                        fristarttime);
                                                   },
                                                   onEndChange: (end) {
                                                     setState(() {
-                                                      endtime = end.hour
+                                                      friendtime = end.hour
                                                               .toString() +
                                                           " : " +
                                                           end.minute.toString();
                                                     });
 
                                                     print(
-                                                        "end time " + endtime);
+                                                        "end time " + friendtime);
                                                   },
                                                   interval:
                                                       Duration(minutes: 01),
@@ -1586,7 +1598,7 @@ class _dashboardState extends State<dashboard> {
                                     children: [
                                       sat
                                           ? Text(
-                                              starttime + " " + endtime,
+                                              satstarttime + " " + satendtime,
                                               style: TextStyle(
                                                 height: 1.5,
                                                 fontSize: 14.0,
@@ -1620,7 +1632,7 @@ class _dashboardState extends State<dashboard> {
                                                       hour: 22, minute: 9),
                                                   onStartChange: (start) {
                                                     setState(() {
-                                                      starttime = start.hour
+                                                      satstarttime = start.hour
                                                               .toString() +
                                                           " : " +
                                                           start.minute
@@ -1628,18 +1640,18 @@ class _dashboardState extends State<dashboard> {
                                                     });
 
                                                     print("start time is" +
-                                                        starttime);
+                                                        satstarttime);
                                                   },
                                                   onEndChange: (end) {
                                                     setState(() {
-                                                      endtime = end.hour
+                                                      satendtime = end.hour
                                                               .toString() +
                                                           " : " +
                                                           end.minute.toString();
                                                     });
 
                                                     print(
-                                                        "end time " + endtime);
+                                                        "end time " + satendtime);
                                                   },
                                                   interval:
                                                       Duration(minutes: 01),
@@ -1746,7 +1758,7 @@ class _dashboardState extends State<dashboard> {
                                     children: [
                                       sun
                                           ? Text(
-                                              starttime + " " + endtime,
+                                              sunstarttime + " " + sunendtime,
                                               style: TextStyle(
                                                 height: 1.5,
                                                 fontSize: 14.0,
@@ -1780,7 +1792,7 @@ class _dashboardState extends State<dashboard> {
                                                       hour: 22, minute: 9),
                                                   onStartChange: (start) {
                                                     setState(() {
-                                                      starttime = start.hour
+                                                      sunstarttime = start.hour
                                                               .toString() +
                                                           " : " +
                                                           start.minute
@@ -1788,18 +1800,18 @@ class _dashboardState extends State<dashboard> {
                                                     });
 
                                                     print("start time is" +
-                                                        starttime);
+                                                        sunstarttime);
                                                   },
                                                   onEndChange: (end) {
                                                     setState(() {
-                                                      endtime = end.hour
+                                                      sunendtime = end.hour
                                                               .toString() +
                                                           " : " +
                                                           end.minute.toString();
                                                     });
 
                                                     print(
-                                                        "end time " + endtime);
+                                                        "end time " + sunendtime);
                                                   },
                                                   interval:
                                                       Duration(minutes: 01),
