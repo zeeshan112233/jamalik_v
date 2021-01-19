@@ -17,6 +17,13 @@ class home_2 extends StatefulWidget {
 class _State extends State<home_2> {
   bool pending = false;
   bool completed = false;
+  var pendingarray=[ "pending Clicked " ,"pending Clicked ","pending Clicked ","pending Clicked "];
+  var completedarray=[ "Completed Clicked " ,"Completed Clicked ","Completed Clicked ","Completed Clicked "];
+  int penarraylength=0;
+  int comarraylength=0;
+
+
+
   @override
   Widget build(BuildContext context) {
     final screenheight =
@@ -77,10 +84,7 @@ class _State extends State<home_2> {
                 ]),
           ),
 
-          // drawer: NavDrawer(
-          //   dp: "images/logo.png",
-          //   name: "Ifraham :p",
-          // ),
+         
           body: Container(
             height: screenheight - kToolbarHeight,
             child: Padding(
@@ -421,69 +425,78 @@ class _State extends State<home_2> {
                               ],
                             ),
                           ),
-                          Expanded(
-                            child: Container(
-                              height: 30,
-                              color: Colors.amber,
-                              child: pending
-                                  ? Padding(
-                                      padding: const EdgeInsets.symmetric(
-                                        horizontal: 20,
-                                        vertical: 10,
-                                      ),
-                                      child: Column(
-                                        children: [
-                                          Row(
+                          pending
+                              ? Expanded(
+                                  child: 
+                                  Container(
+                                    //height: ,
+                                    color: Colors.amber,
+                                    child: ListView.builder(
+                                      itemCount: completedarray.length,
+                                      itemBuilder: (context, index) {
+                                        return Padding(
+                                          padding: const EdgeInsets.symmetric(
+                                            horizontal: 20,
+                                            vertical: 10,
+                                          ),
+                                          child: Row(
                                             children: [
                                               Icon(
                                                 Icons.access_alarm,
-                                                color: Colors.black,
+                                                color: Colors.red,
                                                 size: 30.0,
                                               ),
                                               SizedBox(
-                                                width: 20,
+                                                width: 10,
                                               ),
                                               Expanded(
                                                 child: Container(
-                                                  child:
-                                                      Text("Pending Clicked"),
-                                                ),
+                                                  child: Text(
+                                                      pendingarray[index] + "$index"),
+                                                )
                                               ),
                                             ],
                                           ),
-                                        ],
-                                      ),
-                                    )
-                                  : Padding(
-                                      padding: const EdgeInsets.symmetric(
-                                        horizontal: 20,
-                                        vertical: 10,
-                                      ),
-                                      child: Column(
-                                        children: [
-                                          Row(
-                                            children: [
-                                              Icon(
-                                                Icons.access_alarm,
-                                                color: Colors.black,
-                                                size: 30.0,
-                                              ),
-                                              SizedBox(
-                                                width: 20,
-                                              ),
-                                              Expanded(
-                                                child: Container(
-                                                  child:
-                                                      Text("Completed Clicked"),
-                                                ),
-                                              ),
-                                            ],
-                                          ),
-                                        ],
-                                      ),
+                                        );
+                                      },
                                     ),
-                            ),
-                          ),
+                                  ),
+                                )
+                              : Expanded(
+                                  child: Container(
+                                    //height: 30,
+                                    color: Colors.amber,
+                                    child: ListView.builder(
+                                      itemCount: completedarray.length,
+                                      itemBuilder: (context, index) {
+                                        return Padding(
+                                          padding: const EdgeInsets.symmetric(
+                                            horizontal: 20,
+                                            vertical: 10,
+                                          ),
+                                          child: Row(
+                                            children: [
+                                              Icon(
+                                                Icons.assignment_turned_in_outlined,
+                                                color: Colors.green,
+                                                size: 30.0,
+                                              ),
+                                              SizedBox(
+                                                width: 10,
+                                              ),
+                                              Expanded(
+                                                child: Container(
+                                                  child: Text(
+                                                      completedarray[index] + "$index"),
+                                                ),
+                                              ),
+                                            ],
+                                          ),
+                                        );
+                                      },
+                                    ),
+                                  ),
+                                )
                         ],
                       ),
                     ),
@@ -497,3 +510,5 @@ class _State extends State<home_2> {
     );
   }
 }
+// Icons.assignment_turned_in_outlined,
+//                                                 color: Colors.green,
