@@ -17,12 +17,20 @@ class home_2 extends StatefulWidget {
 class _State extends State<home_2> {
   bool pending = false;
   bool completed = false;
-  var pendingarray=[ "pending Clicked " ,"pending Clicked ","pending Clicked ","pending Clicked "];
-  var completedarray=[ "Completed Clicked " ,"Completed Clicked ","Completed Clicked ","Completed Clicked "];
-  int penarraylength=0;
-  int comarraylength=0;
-
-
+  var pendingarray = [
+    "pending Clicked ",
+    "pending Clicked ",
+    "pending Clicked ",
+    "pending Clicked "
+  ];
+  var completedarray = [
+    "Completed Clicked ",
+    "Completed Clicked ",
+    "Completed Clicked ",
+    "Completed Clicked "
+  ];
+  int penarraylength = 0;
+  int comarraylength = 0;
 
   @override
   Widget build(BuildContext context) {
@@ -83,8 +91,6 @@ class _State extends State<home_2> {
                   )
                 ]),
           ),
-
-         
           body: Container(
             height: screenheight - kToolbarHeight,
             child: Padding(
@@ -100,7 +106,16 @@ class _State extends State<home_2> {
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           Container(
+                            /////////////////////////
                             decoration: BoxDecoration(
+                              gradient: LinearGradient(
+                                colors: [
+                                  Colors.purple.shade300,
+                                  Colors.pink.shade200,
+                                ],
+                                begin: Alignment.topCenter,
+                                end: Alignment.bottomCenter,
+                              ),
                               borderRadius: BorderRadius.circular(20),
                               color: Colors.green,
                               boxShadow: [],
@@ -115,17 +130,29 @@ class _State extends State<home_2> {
                                   children: [
                                     Icon(
                                       Icons.access_alarm,
-                                      color: Colors.black,
+                                      color: Colors.white,
                                       size: 30.0,
                                     ),
                                     SizedBox(width: 5),
-                                    Text("Sales Today"),
+                                    Text(
+                                      "Sales Today",
+                                      style: TextStyle(
+                                        color: Colors.white,
+                                        fontWeight: FontWeight.w500,
+                                      ),
+                                    ),
                                   ],
                                 ),
                                 Row(
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   children: [
-                                    Text("\$ 300"),
+                                    Text(
+                                      "QAR 300",
+                                      style: TextStyle(
+                                        color: Colors.white,
+                                        fontWeight: FontWeight.w500,
+                                      ),
+                                    ),
                                   ],
                                 ),
                               ],
@@ -134,6 +161,14 @@ class _State extends State<home_2> {
                           //weekly
                           Container(
                             decoration: BoxDecoration(
+                              gradient: LinearGradient(
+                                colors: [
+                                  Colors.purple.shade300,
+                                  Colors.pink.shade200,
+                                ],
+                                begin: Alignment.topCenter,
+                                end: Alignment.bottomCenter,
+                              ),
                               borderRadius: BorderRadius.circular(20),
                               color: Colors.green,
                               boxShadow: [],
@@ -148,17 +183,29 @@ class _State extends State<home_2> {
                                   children: [
                                     Icon(
                                       Icons.alarm_on,
-                                      color: Colors.black,
+                                      color: Colors.white,
                                       size: 30.0,
                                     ),
                                     SizedBox(width: 5),
-                                    Text("Weekly Sales"),
+                                    Text(
+                                      "Weekly Sales",
+                                      style: TextStyle(
+                                        color: Colors.white,
+                                        fontWeight: FontWeight.w500,
+                                      ),
+                                    ),
                                   ],
                                 ),
                                 Row(
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   children: [
-                                    Text("\$ 300"),
+                                    Text(
+                                      "QAR 300",
+                                      style: TextStyle(
+                                        color: Colors.white,
+                                        fontWeight: FontWeight.w500,
+                                      ),
+                                    ),
                                   ],
                                 ),
                               ],
@@ -175,6 +222,14 @@ class _State extends State<home_2> {
                         children: [
                           Container(
                             decoration: BoxDecoration(
+                              gradient: LinearGradient(
+                                colors: [
+                                  Colors.purple.shade300,
+                                  Colors.pink.shade200,
+                                ],
+                                begin: Alignment.topCenter,
+                                end: Alignment.bottomCenter,
+                              ),
                               borderRadius: BorderRadius.circular(20),
                               color: Colors.green,
                               boxShadow: [],
@@ -189,17 +244,29 @@ class _State extends State<home_2> {
                                   children: [
                                     Icon(
                                       Icons.addchart_rounded,
-                                      color: Colors.black,
+                                      color: Colors.white,
                                       size: 30.0,
                                     ),
                                     SizedBox(width: 5),
-                                    Text("Monthly Sales"),
+                                    Text(
+                                      "Monthly Sales",
+                                      style: TextStyle(
+                                        color: Colors.white,
+                                        fontWeight: FontWeight.w500,
+                                      ),
+                                    ),
                                   ],
                                 ),
                                 Row(
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   children: [
-                                    Text("\$ 300"),
+                                    Text(
+                                      "QAR 300",
+                                      style: TextStyle(
+                                        color: Colors.white,
+                                        fontWeight: FontWeight.w500,
+                                      ),
+                                    ),
                                   ],
                                 ),
                               ],
@@ -207,6 +274,14 @@ class _State extends State<home_2> {
                           ),
                           Container(
                             decoration: BoxDecoration(
+                              gradient: LinearGradient(
+                                colors: [
+                                  Colors.purple.shade300,
+                                  Colors.pink.shade200,
+                                ],
+                                begin: Alignment.topCenter,
+                                end: Alignment.bottomCenter,
+                              ),
                               borderRadius: BorderRadius.circular(20),
                               color: Colors.green,
                               boxShadow: [],
@@ -221,17 +296,29 @@ class _State extends State<home_2> {
                                   children: [
                                     Icon(
                                       Icons.access_alarm,
-                                      color: Colors.black,
+                                      color: Colors.white,
                                       size: 30.0,
                                     ),
                                     SizedBox(width: 5),
-                                    Text("Daily Sales"),
+                                    Text(
+                                      "Daily Sales",
+                                      style: TextStyle(
+                                        color: Colors.white,
+                                        fontWeight: FontWeight.w500,
+                                      ),
+                                    ),
                                   ],
                                 ),
                                 Row(
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   children: [
-                                    Text("\$ 300"),
+                                    Text(
+                                      "QAR 300",
+                                      style: TextStyle(
+                                        color: Colors.white,
+                                        fontWeight: FontWeight.w500,
+                                      ),
+                                    ),
                                   ],
                                 ),
                               ],
@@ -247,7 +334,7 @@ class _State extends State<home_2> {
                   Expanded(
                     child: Container(
                       // height: MediaQuery.of(context).size.height*0.4,
-                      color: Colors.grey[100],
+                      //color: Colors.grey[100],
                       child: Column(
                         children: [
                           Row(
@@ -265,7 +352,7 @@ class _State extends State<home_2> {
                           Padding(
                             padding: const EdgeInsets.symmetric(
                               horizontal: 10,
-                              vertical: 10,
+                              vertical: 25,
                             ),
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -427,10 +514,9 @@ class _State extends State<home_2> {
                           ),
                           pending
                               ? Expanded(
-                                  child: 
-                                  Container(
+                                  child: Container(
                                     //height: ,
-                                    color: Colors.amber,
+                                    //color: Colors.amber,
                                     child: ListView.builder(
                                       itemCount: completedarray.length,
                                       itemBuilder: (context, index) {
@@ -450,11 +536,11 @@ class _State extends State<home_2> {
                                                 width: 10,
                                               ),
                                               Expanded(
-                                                child: Container(
-                                                  child: Text(
-                                                      pendingarray[index] + "$index"),
-                                                )
-                                              ),
+                                                  child: Container(
+                                                child: Text(
+                                                    pendingarray[index] +
+                                                        "$index"),
+                                              )),
                                             ],
                                           ),
                                         );
@@ -465,7 +551,7 @@ class _State extends State<home_2> {
                               : Expanded(
                                   child: Container(
                                     //height: 30,
-                                    color: Colors.amber,
+                                    //color: Colors.amber,
                                     child: ListView.builder(
                                       itemCount: completedarray.length,
                                       itemBuilder: (context, index) {
@@ -477,7 +563,8 @@ class _State extends State<home_2> {
                                           child: Row(
                                             children: [
                                               Icon(
-                                                Icons.assignment_turned_in_outlined,
+                                                Icons
+                                                    .assignment_turned_in_outlined,
                                                 color: Colors.green,
                                                 size: 30.0,
                                               ),
@@ -487,7 +574,8 @@ class _State extends State<home_2> {
                                               Expanded(
                                                 child: Container(
                                                   child: Text(
-                                                      completedarray[index] + "$index"),
+                                                      completedarray[index] +
+                                                          "$index"),
                                                 ),
                                               ),
                                             ],
