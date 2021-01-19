@@ -26,7 +26,7 @@ class Signup {
       'Accept': 'application/json',
     };
 
-    final uri = 'http://51.222.107.49/api/Customer/CustomerRegistration/';
+    final uri = 'http://51.222.107.49/api/Provider/ProviderRegistration/';
 
     http.Response response =
         await http.post(uri, body: body, headers: requestHeaders);

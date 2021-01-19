@@ -23,7 +23,6 @@ import 'package:redux/redux.dart';
 import './Ui/welcome_home.dart';
 import 'package:jamalik/Ui/Checkout.dart';
 
-
 void main() {
   final _initialState = Appstate();
   final Store<Appstate> _store =
@@ -42,7 +41,7 @@ class MyApp extends StatelessWidget {
       store: store,
       child: MaterialApp(
         title: "Welcome",
-        home: new SplashScreen(),
+        home: home_2(),
         //welcome class define in ui folder
       ),
     );

@@ -18,7 +18,7 @@ class Login {
       'Accept': 'application/json',
     };
 
-    final uri = 'http://51.222.107.49/api/Customer/CustomerLogin';
+    final uri = 'http://51.222.107.49/api/Provider/ProviderLogin';
 
     http.Response response =
         await http.post(uri, body: body, headers: requestHeaders);
