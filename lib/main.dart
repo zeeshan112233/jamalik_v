@@ -41,7 +41,7 @@ class MyApp extends StatelessWidget {
       store: store,
       child: MaterialApp(
         title: "Welcome",
-        home: new home_2(),
+        home: new GettingStarted(),
         //welcome class define in ui folder
       ),
     );
