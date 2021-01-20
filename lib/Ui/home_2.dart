@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_redux/flutter_redux.dart';
 import 'package:jamalik/Ui/AR.dart';
+import 'package:jamalik/Ui/AddServiceDetails.dart';
 import 'package:jamalik/Ui/FAQ.dart';
 import 'package:jamalik/Ui/Profile.dart';
 import 'package:jamalik/Ui/login.dart';
@@ -662,7 +663,13 @@ class _State extends State<home_2> {
               FloatingActionButtonLocation.centerDocked,
           floatingActionButton: new FloatingActionButton(
             backgroundColor: Colors.pink[300],
-            onPressed: () {},
+            onPressed: () {
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => AddServiceDetails(),
+                  ));
+            },
             tooltip: 'Increment',
             child: new Icon(Icons.add),
           ),

@@ -21,7 +21,8 @@ import 'package:jamalik/redux/reducers.dart';
 import 'package:jamalik/widgets/Serviceswidget.dart';
 import 'package:redux/redux.dart';
 import './Ui/welcome_home.dart';
-import 'package:jamalik/Ui/Checkout.dart';
+import 'package:jamalik/Ui/AddServiceDetails.dart';
+import 'package:jamalik/Ui/dashboard.dart';
 
 void main() {
   final _initialState = Appstate();
