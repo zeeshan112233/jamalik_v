@@ -21,7 +21,8 @@ import 'package:jamalik/redux/reducers.dart';
 import 'package:jamalik/widgets/Serviceswidget.dart';
 import 'package:redux/redux.dart';
 import './Ui/welcome_home.dart';
-import 'package:jamalik/Ui/Checkout.dart';
+import 'package:jamalik/Ui/AddServiceDetails.dart';
+import 'package:jamalik/Ui/dashboard.dart';
 
 void main() {
   final _initialState = Appstate();
@@ -41,7 +42,7 @@ class MyApp extends StatelessWidget {
       store: store,
       child: MaterialApp(
         title: "Welcome",
-        home: new GettingStarted(),
+        home: new AddServiceDetails(),
         //welcome class define in ui folder
       ),
     );

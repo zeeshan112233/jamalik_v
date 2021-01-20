@@ -15,7 +15,7 @@ class home_2 extends StatefulWidget {
 }
 
 class _State extends State<home_2> {
-  bool pending = false;
+  bool pending = true;
   bool completed = false;
   var pendingarray = [
     "pending Clicked ",
@@ -352,7 +352,7 @@ class _State extends State<home_2> {
                           Padding(
                             padding: const EdgeInsets.symmetric(
                               horizontal: 10,
-                              vertical: 25,
+                              vertical: 15,
                             ),
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -516,7 +516,7 @@ class _State extends State<home_2> {
                               ? Expanded(
                                   child: Container(
                                     //height: ,
-                                    //color: Colors.amber,
+                                    color: Colors.amber,
                                     child: ListView.builder(
                                       itemCount: completedarray.length,
                                       itemBuilder: (context, index) {
@@ -563,8 +563,7 @@ class _State extends State<home_2> {
                                           child: Row(
                                             children: [
                                               Icon(
-                                                Icons
-                                                    .assignment_turned_in_outlined,
+                                                Icons.check_circle_outline,     //assignment_turned_in_outlined,
                                                 color: Colors.green,
                                                 size: 30.0,
                                               ),
