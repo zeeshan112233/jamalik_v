@@ -23,10 +23,9 @@ class _AddServiceDetailsState extends State<AddServiceDetails> {
               height: 10,
             ),
             Expanded(
-                          child: Container(
+              child: Container(
                 // for scroll view
 
-                
                 child: SingleChildScrollView(
                   child: Column(
                     children: [
@@ -39,7 +38,8 @@ class _AddServiceDetailsState extends State<AddServiceDetails> {
                               color: Colors.grey.withOpacity(0.3),
                               spreadRadius: 4,
                               blurRadius: 7,
-                              offset: Offset(0, 2), // changes position of shadow
+                              offset:
+                                  Offset(0, 2), // changes position of shadow
                             ),
                           ],
                         ),
@@ -93,8 +93,23 @@ class _AddServiceDetailsState extends State<AddServiceDetails> {
                           ),
                         ),
                       ),
+                      SizedBox(
+                        height: 20,
+                      ),
                       Container(
-                        
+                        decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.all(Radius.circular(10)),
+                          boxShadow: [
+                            BoxShadow(
+                              color: Colors.grey.withOpacity(0.3),
+                              spreadRadius: 4,
+                              blurRadius: 7,
+                              offset:
+                                  Offset(0, 2), // changes position of shadow
+                            ),
+                          ],
+                        ),
                         child: Padding(
                           padding: const EdgeInsets.all(8.0),
                           child: Column(
