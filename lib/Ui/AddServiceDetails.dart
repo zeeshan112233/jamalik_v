@@ -9,6 +9,36 @@ class AddServiceDetails extends StatefulWidget {
 }
 
 class _AddServiceDetailsState extends State<AddServiceDetails> {
+  static const _mainCategories = [
+    'Beauty',
+    'Health',
+    'Others',
+  ];
+
+  var _subcategories = [
+    "Hair Dresssing Services",
+    "Cosmetology",
+    "Body Care",
+    "SPA Procedures",
+    "Nail Services",
+    "Tatoos and piercings",
+    "Tanning Services"
+  ];
+
+  var healthsubcategory = [
+    "Massage",
+    "Sports Training",
+    "Private Doctor",
+    "Diagnosis / Examination",
+  ];
+
+  var otherssubcategory = [
+    "Consultations",
+  ];
+
+  String _mainCategory = "Beauty";
+  String _subCategory = "Hair Dresssing Services";
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -53,6 +83,158 @@ class _AddServiceDetailsState extends State<AddServiceDetails> {
                                 suffixIcon: Icons.assignment_turned_in_outlined,
                                 borderColor: Colors.pink[100],
                                 tfColor: Colors.white,
+                              ),
+                              Container(
+                                height: 50,
+                                decoration: BoxDecoration(
+                                  color: Colors.white,
+                                  border: Border.all(
+                                    color: Colors.grey
+                                        .shade300, //                   <--- border color
+                                  ),
+                                  borderRadius: BorderRadius.all(
+                                    Radius.circular(20),
+                                  ),
+                                ),
+                                child: Padding(
+                                  padding: const EdgeInsets.symmetric(
+                                      horizontal: 10),
+                                  child: Row(
+                                    children: [
+                                      Icon(
+                                        Icons.assignment_turned_in_outlined,
+                                        color: Colors.blue,
+                                        //size: 1.0,
+                                      ),
+                                      SizedBox(
+                                        width: 15,
+                                      ),
+                                      Text("Main Category"),
+                                      Spacer(),
+                                      DropdownButtonHideUnderline(
+                                        child: DropdownButton(
+                                            isDense:
+                                                true, // Reduces the dropdowns height by +/- 50%
+                                            icon:
+                                                Icon(Icons.keyboard_arrow_down),
+                                            value: _mainCategory,
+                                            items: _mainCategories.map((item) {
+                                              return DropdownMenuItem(
+                                                value: item,
+                                                child: Text(item),
+                                              );
+                                            }).toList(),
+                                            onChanged: (selectedItem) => {
+                                                  if (selectedItem == "Beauty")
+                                                    {
+                                                      setState(
+                                                        () => _mainCategory =
+                                                            selectedItem,
+                                                      ),
+                                                      setState(() => {
+                                                            _mainCategory =
+                                                                selectedItem,
+                                                            _subCategory =
+                                                                "Hair Dresssing Services",
+                                                            _subcategories = [
+                                                              "Hair Dresssing Services",
+                                                              "Cosmetology",
+                                                              "Body Care",
+                                                              "SPA Procedures",
+                                                              "Nail Services",
+                                                              "Tatoos and piercings",
+                                                              "Tanning Services"
+                                                            ]
+                                                          }),
+                                                    }
+                                                  else if (selectedItem ==
+                                                      "Health")
+                                                    {
+                                                      setState(() => {
+                                                            _mainCategory =
+                                                                selectedItem,
+                                                            _subCategory =
+                                                                "Massage",
+                                                            _subcategories = [
+                                                              "Massage",
+                                                              "Sports Training",
+                                                              "Private Doctor",
+                                                              "Diagnosis / Examination",
+                                                            ]
+                                                          }),
+                                                    }
+                                                  else if (selectedItem ==
+                                                      "Others")
+                                                    {
+                                                      setState(() => {
+                                                            _mainCategory =
+                                                                selectedItem,
+                                                            _subCategory =
+                                                                'Consulting',
+                                                            _subcategories = [
+                                                              "Consulting"
+                                                            ]
+                                                          }),
+                                                    }
+                                                }),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              ),
+                              SizedBox(
+                                height: 20,
+                              ),
+                              Container(
+                                height: 50,
+                                decoration: BoxDecoration(
+                                  color: Colors.white,
+                                  border: Border.all(
+                                    color: Colors.grey
+                                        .shade300, //                   <--- border color
+                                  ),
+                                  borderRadius: BorderRadius.all(
+                                    Radius.circular(20),
+                                  ),
+                                ),
+                                child: Padding(
+                                  padding: const EdgeInsets.symmetric(
+                                      horizontal: 10),
+                                  child: Row(
+                                    children: [
+                                      Icon(
+                                        Icons.assignment_turned_in_outlined,
+                                        color: Colors.blue,
+                                        //size: 1.0,
+                                      ),
+                                      SizedBox(
+                                        width: 15,
+                                      ),
+                                      Text("Sub Category"),
+                                      Spacer(),
+                                      DropdownButtonHideUnderline(
+                                        child: DropdownButton(
+                                          isDense:
+                                              true, // Reduces the dropdowns height by +/- 50%
+                                          icon: Icon(Icons.keyboard_arrow_down),
+                                          value: _subCategory,
+                                          items: _subcategories.map((item) {
+                                            return DropdownMenuItem(
+                                              value: item,
+                                              child: Text(item),
+                                            );
+                                          }).toList(),
+                                          onChanged: (selectedItem) => setState(
+                                            () => _subCategory = selectedItem,
+                                          ),
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              ),
+                              SizedBox(
+                                height: 20,
                               ),
                               TF(
                                 hintText: "Phone Number",
