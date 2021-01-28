@@ -460,81 +460,9 @@ class ProfileState extends State<Profile> {
                                           }
                                         else
                                           {
-                                            setState(() {
-                                              isloading = true;
-                                            }),
-                                            Signup()
-                                                .signup(
-                                                    firstName:
-                                                        _firstnamecontroller
-                                                            .text,
-                                                    lastName:
-                                                        _lastnamecontroller
-                                                            .text,
-                                                    email:
-                                                        _emailcontroller.text,
-                                                    gender: this.gender,
-                                                    password:
-                                                        _passwordcontroller
-                                                            .text,
-                                                    phonenumber:
-                                                        _phonenocontroller.text)
-                                                .then((value) => {
-                                                          if (value.firstName !=
-                                                              null)
-                                                            {
-                                                              setState(() {
-                                                                isloading =
-                                                                    false;
-                                                              }),
-                                                              // StoreProvider.of<Appstate>(context)
-                                                              //     .dispatch(MyUser(value.user)),
-                                                              print(value),
-                                                              Fluttertoast.showToast(
-                                                                  msg: 'Sign up Successfull with username : ' +
-                                                                      value
-                                                                          .firstName
-                                                                          .toString()),
-
-                                                              Navigator.push(
-                                                                context,
-                                                                MaterialPageRoute(
-                                                                    builder:
-                                                                        (context) =>
-                                                                            login()),
-                                                              )
-                                                            }
-                                                          else
-                                                            {
-                                                              setState(() {
-                                                                isloading =
-                                                                    false;
-                                                              }),
-                                                              Fluttertoast
-                                                                  .showToast(
-                                                                      msg:
-                                                                          'Failed to signup ')
-                                                            },
-                                                          print(
-                                                              value.toString()),
-                                                        }
-
-                                                    // Navigator.push(
-                                                    //   context,
-                                                    //   MaterialPageRoute(
-                                                    //       builder: (context) => Otpauthentication()),
-                                                    // )
-                                                    )
+                                           
                                           },
 
-                                        // print(_firstnamecontroller.text.length),
-                                        // print(_lastnamecontroller.text),
-                                        // print(_passwordcontroller.text),
-
-                                        // Navigator.push(
-                                        //   context,
-                                        //   MaterialPageRoute(builder: (context) => login()),
-                                        // )
                                       },
                                     )
                                   : Container(

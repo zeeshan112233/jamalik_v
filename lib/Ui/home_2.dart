@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_redux/flutter_redux.dart';
-import 'package:jamalik/Ui/AR.dart';
 import 'package:jamalik/Ui/AddServiceDetails.dart';
 import 'package:jamalik/Ui/FAQ.dart';
 import 'package:jamalik/Ui/Profile.dart';
+import 'package:jamalik/Ui/dashboard.dart';
 import 'package:jamalik/Ui/login.dart';
 import 'package:jamalik/Ui/notification.dart';
 import 'package:jamalik/redux/model/app_state.dart';
@@ -27,19 +27,19 @@ class _State extends State<home_2> {
     });
   }
 
-  bool pending = false;
+  bool pending = true;
   bool completed = false;
   var pendingarray = [
-    "pending Clicked ",
-    "pending Clicked ",
-    "pending Clicked ",
-    "pending Clicked "
+    "Booking at 11 PM TODAY",
+    "Booking at 3 PM TUESDAY",
+    "Booking at 1 PM FRIDAY ",
+    "Booking at 2 PM SATURDAY"
   ];
   var completedarray = [
-    "Completed Clicked ",
-    "Completed Clicked ",
-    "Completed Clicked ",
-    "Completed Clicked "
+    "Mr. Khan's Booking Complete",
+    "Abdul Wahid's Booking Completed ",
+    "Salman's Booking Completed ",
+    "Zeeshan's Booking Completed "
   ];
   int penarraylength = 0;
   int comarraylength = 0;
@@ -66,10 +66,10 @@ class _State extends State<home_2> {
                   child: StoreConnector<Appstate, Appstate>(
                       converter: (store) => store.state,
                       builder: (context, state) {
-                        return Text(
+                        return Text("Welcome "+
                           state.user.firstName,
                           style: TextStyle(
-                              color: Colors.black, fontWeight: FontWeight.w600),
+                              color: Colors.black, fontWeight: FontWeight.w800),
                         );
                       }),
                 ),
@@ -573,8 +573,7 @@ class _State extends State<home_2> {
                                                     Expanded(
                                                         child: Container(
                                                       child: Text(
-                                                          pendingarray[index] +
-                                                              "$index"),
+                                                          pendingarray[index]),
                                                     )),
                                                   ],
                                                 ),
@@ -611,8 +610,8 @@ class _State extends State<home_2> {
                                                       child: Container(
                                                         child: Text(
                                                             completedarray[
-                                                                    index] +
-                                                                "$index"),
+                                                                    index] 
+                                                               ),
                                                       ),
                                                     ),
                                                   ],
@@ -667,7 +666,7 @@ class _State extends State<home_2> {
               Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (context) => AddServiceDetails(),
+                    builder: (context) => dashboard(),
                   ));
             },
             tooltip: 'Increment',

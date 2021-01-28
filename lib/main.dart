@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:jamalik/Ui/AddStaff.dart';
 import 'package:jamalik/Ui/FAQ.dart';
 import 'package:flutter_redux/flutter_redux.dart';
-import 'package:jamalik/Ui/Gakhar.dart';
 import 'package:jamalik/Ui/GettingStarted.dart';
 import 'package:jamalik/Ui/Otpauthentication.dart';
 import 'package:jamalik/Ui/Passwordrecovery.dart';
@@ -20,9 +20,11 @@ import 'package:jamalik/redux/model/app_state.dart';
 import 'package:jamalik/redux/reducers.dart';
 import 'package:jamalik/widgets/Serviceswidget.dart';
 import 'package:redux/redux.dart';
-import './Ui/welcome_home.dart';
+
 import 'package:jamalik/Ui/AddServiceDetails.dart';
 import 'package:jamalik/Ui/dashboard.dart';
+
+import 'Ui/GettingStarted.dart';
 
 void main() {
   final _initialState = Appstate();
@@ -43,16 +45,11 @@ class MyApp extends StatelessWidget {
       child: MaterialApp(
         title: "Welcome",
         home: new SplashScreen(),
-        //welcome class define in ui folder
       ),
     );
   }
 }
 
-// void main() => runApp(new MaterialApp(
-//       title: "Welcome",
-//       home: new GettingStarted(), //welcome class define in ui folder
-//     ));
 
 class SplashScreen extends StatefulWidget {
   @override
@@ -69,7 +66,7 @@ class SplashScreenState extends State<SplashScreen> {
       Navigator.push(
           context,
           MaterialPageRoute(
-            builder: (context) => home_2(),
+            builder: (context) => GettingStarted(),
           ));
     });
   }

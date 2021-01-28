@@ -1,7 +1,12 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_redux/flutter_redux.dart';
 
 import 'package:jamalik/Buttons.dart';
+import 'package:jamalik/Ui/AddServiceDetails.dart';
+import 'package:jamalik/Ui/AddStaff.dart';
+import 'package:jamalik/Ui/FAQ.dart';
+import 'package:jamalik/redux/model/app_state.dart';
 
 import 'package:jamalik/widgets/header_pink.dart';
 import 'package:time_range_picker/time_range_picker.dart';
@@ -43,13 +48,19 @@ class _dashboardState extends State<dashboard> {
       home: Scaffold(
         backgroundColor: Colors.white,
         body: SafeArea(
-          child: Column(
+          child: 
+          
+          StoreConnector<Appstate, Appstate>(
+                      converter: (store) => store.state,
+                      builder: (context, state) {
+                        return 
+          Column(
             children: [
               Container(
                 width: MediaQuery.of(context).size.width,
                 child: header_pink(
                   Back: "images/back.png",
-                  text: "Dashboard",
+                  text: "Weekly Schedule",
                 ),
               ),
               SingleChildScrollView(
@@ -64,247 +75,247 @@ class _dashboardState extends State<dashboard> {
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.spaceAround,
                             children: [
-                              FlatButton(
-                                padding: EdgeInsets.symmetric(
-                                    vertical: 5.0, horizontal: 1),
-                                onPressed: () => {
-                                  setState(
-                                    () {
-                                      _Detail = true;
-                                      _Schedule = false;
-                                      _Services = false;
-                                    },
-                                  ),
-                                },
-                                child: Container(
-                                  decoration: BoxDecoration(
-                                    border: Border.all(
-                                      color: const Color(0xff982877),
-                                    ),
-                                    borderRadius: BorderRadius.all(
-                                        Radius.circular(
-                                            50.0) //                 <--- border radius here
-                                        ),
-                                  ),
-                                  child: Container(
-                                    padding: EdgeInsets.symmetric(
-                                        vertical: 8, horizontal: 30.0),
-                                    decoration: ShapeDecoration(
-                                      shape: StadiumBorder(),
-                                      gradient: _Detail
-                                          ? LinearGradient(
-                                              colors: [
-                                                Colors.purple.shade500,
-                                                Colors.pink.shade200,
-                                              ],
-                                              begin: Alignment.topCenter,
-                                              end: Alignment.bottomCenter,
-                                            )
-                                          : LinearGradient(
-                                              colors: [
-                                                Colors.white,
-                                                Colors.white,
-                                              ],
-                                              begin: Alignment.topCenter,
-                                              end: Alignment.bottomCenter,
-                                            ),
-                                    ),
-                                    child: Row(
-                                      children: [
-                                        _Detail
-                                            ? Image.asset(
-                                                "images/beautybtnwhite.png")
-                                            : Image.asset(
-                                                "images/beautybtnpink.png"),
-                                        SizedBox(
-                                          width: MediaQuery.of(context)
-                                                  .size
-                                                  .width *
-                                              0.05,
-                                        ),
-                                        Text(
-                                          "Detail",
-                                          style: _Detail
-                                              ? TextStyle(
-                                                  color: Colors.white,
-                                                  fontFamily: "DM Sans",
-                                                  fontSize: 14.0,
-                                                  fontWeight: FontWeight.w400)
-                                              : TextStyle(
-                                                  color: Colors.black,
-                                                  fontFamily: "DM Sans",
-                                                  fontSize: 14.0,
-                                                  fontWeight: FontWeight.w400,
-                                                ),
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                ),
-                              ),
-                              SizedBox(
-                                width: 20,
-                              ),
-                              //.......................................Button2..................................................
-                              FlatButton(
-                                padding: EdgeInsets.symmetric(
-                                    vertical: 5.0, horizontal: 1),
-                                onPressed: () => {
-                                  setState(
-                                    () {
-                                      _Detail = false;
-                                      _Schedule = true;
-                                      _Services = false;
-                                    },
-                                  ),
-                                },
-                                child: Container(
-                                  decoration: BoxDecoration(
-                                    border: Border.all(
-                                      color: const Color(0xff982877),
-                                    ),
-                                    borderRadius: BorderRadius.all(
-                                        Radius.circular(
-                                            50.0) //                 <--- border radius here
-                                        ),
-                                  ),
-                                  child: Container(
-                                    padding: EdgeInsets.symmetric(
-                                        vertical: 8, horizontal: 30.0),
-                                    decoration: ShapeDecoration(
-                                      shape: StadiumBorder(),
-                                      gradient: _Schedule
-                                          ? LinearGradient(
-                                              colors: [
-                                                Colors.purple.shade500,
-                                                Colors.pink.shade200,
-                                              ],
-                                              begin: Alignment.topCenter,
-                                              end: Alignment.bottomCenter,
-                                            )
-                                          : LinearGradient(
-                                              colors: [
-                                                Colors.white,
-                                                Colors.white,
-                                              ],
-                                              begin: Alignment.topCenter,
-                                              end: Alignment.bottomCenter,
-                                            ),
-                                    ),
-                                    child: Row(
-                                      children: [
-                                        _Schedule
-                                            ? Image.asset(
-                                                "images/healthbtnwhite.png")
-                                            : Image.asset(
-                                                "images/healthbtnpink.png"),
-                                        SizedBox(
-                                          width: MediaQuery.of(context)
-                                                  .size
-                                                  .width *
-                                              0.05,
-                                        ),
-                                        Text(
-                                          "Schedule",
-                                          style: _Schedule
-                                              ? TextStyle(
-                                                  color: Colors.white,
-                                                  fontFamily: "DM Sans",
-                                                  fontSize: 14.0,
-                                                  fontWeight: FontWeight.w400)
-                                              : TextStyle(
-                                                  color: Colors.black,
-                                                  fontFamily: "DM Sans",
-                                                  fontSize: 14.0,
-                                                  fontWeight: FontWeight.w400,
-                                                ),
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                ),
-                              ),
-                              SizedBox(
-                                width: 20,
-                              ),
-                              FlatButton(
-                                padding: EdgeInsets.symmetric(
-                                    vertical: 5.0, horizontal: 1),
-                                onPressed: () => {
-                                  setState(
-                                    () {
-                                      _Detail = false;
-                                      _Schedule = false;
-                                      _Services = true;
-                                    },
-                                  )
-                                },
-                                child: Container(
-                                  decoration: BoxDecoration(
-                                    border: Border.all(
-                                      color: const Color(0xff982877),
-                                    ),
-                                    borderRadius: BorderRadius.all(
-                                        Radius.circular(
-                                            50.0) //                 <--- border radius here
-                                        ),
-                                  ),
-                                  child: Container(
-                                    padding: EdgeInsets.symmetric(
-                                        vertical: 8, horizontal: 30.0),
-                                    decoration: ShapeDecoration(
-                                      shape: StadiumBorder(),
-                                      gradient: _Services
-                                          ? LinearGradient(
-                                              colors: [
-                                                Colors.purple.shade500,
-                                                Colors.pink.shade200,
-                                              ],
-                                              begin: Alignment.topCenter,
-                                              end: Alignment.bottomCenter,
-                                            )
-                                          : LinearGradient(
-                                              colors: [
-                                                Colors.white,
-                                                Colors.white,
-                                              ],
-                                              begin: Alignment.topCenter,
-                                              end: Alignment.bottomCenter,
-                                            ),
-                                    ),
-                                    child: Row(
-                                      children: [
-                                        _Services
-                                            ? Image.asset(
-                                                "images/healthbtnwhite.png")
-                                            : Image.asset(
-                                                "images/healthbtnpink.png"),
-                                        SizedBox(
-                                          width: MediaQuery.of(context)
-                                                  .size
-                                                  .width *
-                                              0.05,
-                                        ),
-                                        Text(
-                                          "Services",
-                                          style: _Services
-                                              ? TextStyle(
-                                                  color: Colors.white,
-                                                  fontFamily: "DM Sans",
-                                                  fontSize: 14.0,
-                                                  fontWeight: FontWeight.w400)
-                                              : TextStyle(
-                                                  color: Colors.black,
-                                                  fontFamily: "DM Sans",
-                                                  fontSize: 14.0,
-                                                  fontWeight: FontWeight.w400,
-                                                ),
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                ),
-                              ),
+                              // FlatButton(
+                              //   padding: EdgeInsets.symmetric(
+                              //       vertical: 5.0, horizontal: 1),
+                              //   onPressed: () => {
+                              //     setState(
+                              //       () {
+                              //         _Detail = true;
+                              //         _Schedule = false;
+                              //         _Services = false;
+                              //       },
+                              //     ),
+                              //   },
+                              //   child: Container(
+                              //     decoration: BoxDecoration(
+                              //       border: Border.all(
+                              //         color: const Color(0xff982877),
+                              //       ),
+                              //       borderRadius: BorderRadius.all(
+                              //           Radius.circular(
+                              //               50.0) //                 <--- border radius here
+                              //           ),
+                              //     ),
+                              //     child: Container(
+                              //       padding: EdgeInsets.symmetric(
+                              //           vertical: 8, horizontal: 30.0),
+                              //       decoration: ShapeDecoration(
+                              //         shape: StadiumBorder(),
+                              //         gradient: _Detail
+                              //             ? LinearGradient(
+                              //                 colors: [
+                              //                   Colors.purple.shade500,
+                              //                   Colors.pink.shade200,
+                              //                 ],
+                              //                 begin: Alignment.topCenter,
+                              //                 end: Alignment.bottomCenter,
+                              //               )
+                              //             : LinearGradient(
+                              //                 colors: [
+                              //                   Colors.white,
+                              //                   Colors.white,
+                              //                 ],
+                              //                 begin: Alignment.topCenter,
+                              //                 end: Alignment.bottomCenter,
+                              //               ),
+                              //       ),
+                              //       child: Row(
+                              //         children: [
+                              //           _Detail
+                              //               ? Image.asset(
+                              //                   "images/beautybtnwhite.png")
+                              //               : Image.asset(
+                              //                   "images/beautybtnpink.png"),
+                              //           SizedBox(
+                              //             width: MediaQuery.of(context)
+                              //                     .size
+                              //                     .width *
+                              //                 0.05,
+                              //           ),
+                              //           Text(
+                              //             "Detail",
+                              //             style: _Detail
+                              //                 ? TextStyle(
+                              //                     color: Colors.white,
+                              //                     fontFamily: "DM Sans",
+                              //                     fontSize: 14.0,
+                              //                     fontWeight: FontWeight.w400)
+                              //                 : TextStyle(
+                              //                     color: Colors.black,
+                              //                     fontFamily: "DM Sans",
+                              //                     fontSize: 14.0,
+                              //                     fontWeight: FontWeight.w400,
+                              //                   ),
+                              //           ),
+                              //         ],
+                              //       ),
+                              //     ),
+                              //   ),
+                              // ),
+                              // SizedBox(
+                              //   width: 20,
+                              // ),
+                              // //.......................................Button2..................................................
+                              // FlatButton(
+                              //   padding: EdgeInsets.symmetric(
+                              //       vertical: 5.0, horizontal: 1),
+                              //   onPressed: () => {
+                              //     setState(
+                              //       () {
+                              //         _Detail = false;
+                              //         _Schedule = true;
+                              //         _Services = false;
+                              //       },
+                              //     ),
+                              //   },
+                              //   child: Container(
+                              //     decoration: BoxDecoration(
+                              //       border: Border.all(
+                              //         color: const Color(0xff982877),
+                              //       ),
+                              //       borderRadius: BorderRadius.all(
+                              //           Radius.circular(
+                              //               50.0) //                 <--- border radius here
+                              //           ),
+                              //     ),
+                              //     child: Container(
+                              //       padding: EdgeInsets.symmetric(
+                              //           vertical: 8, horizontal: 30.0),
+                              //       decoration: ShapeDecoration(
+                              //         shape: StadiumBorder(),
+                              //         gradient: _Schedule
+                              //             ? LinearGradient(
+                              //                 colors: [
+                              //                   Colors.purple.shade500,
+                              //                   Colors.pink.shade200,
+                              //                 ],
+                              //                 begin: Alignment.topCenter,
+                              //                 end: Alignment.bottomCenter,
+                              //               )
+                              //             : LinearGradient(
+                              //                 colors: [
+                              //                   Colors.white,
+                              //                   Colors.white,
+                              //                 ],
+                              //                 begin: Alignment.topCenter,
+                              //                 end: Alignment.bottomCenter,
+                              //               ),
+                              //       ),
+                              //       child: Row(
+                              //         children: [
+                              //           _Schedule
+                              //               ? Image.asset(
+                              //                   "images/healthbtnwhite.png")
+                              //               : Image.asset(
+                              //                   "images/healthbtnpink.png"),
+                              //           SizedBox(
+                              //             width: MediaQuery.of(context)
+                              //                     .size
+                              //                     .width *
+                              //                 0.05,
+                              //           ),
+                              //           Text(
+                              //             "Schedule",
+                              //             style: _Schedule
+                              //                 ? TextStyle(
+                              //                     color: Colors.white,
+                              //                     fontFamily: "DM Sans",
+                              //                     fontSize: 14.0,
+                              //                     fontWeight: FontWeight.w400)
+                              //                 : TextStyle(
+                              //                     color: Colors.black,
+                              //                     fontFamily: "DM Sans",
+                              //                     fontSize: 14.0,
+                              //                     fontWeight: FontWeight.w400,
+                              //                   ),
+                              //           ),
+                              //         ],
+                              //       ),
+                              //     ),
+                              //   ),
+                              // ),
+                              // SizedBox(
+                              //   width: 20,
+                              // ),
+                              // FlatButton(
+                              //   padding: EdgeInsets.symmetric(
+                              //       vertical: 5.0, horizontal: 1),
+                              //   onPressed: () => {
+                              //     setState(
+                              //       () {
+                              //         _Detail = false;
+                              //         _Schedule = false;
+                              //         _Services = true;
+                              //       },
+                              //     )
+                              //   },
+                              //   child: Container(
+                              //     decoration: BoxDecoration(
+                              //       border: Border.all(
+                              //         color: const Color(0xff982877),
+                              //       ),
+                              //       borderRadius: BorderRadius.all(
+                              //           Radius.circular(
+                              //               50.0) //                 <--- border radius here
+                              //           ),
+                              //     ),
+                              //     child: Container(
+                              //       padding: EdgeInsets.symmetric(
+                              //           vertical: 8, horizontal: 30.0),
+                              //       decoration: ShapeDecoration(
+                              //         shape: StadiumBorder(),
+                              //         gradient: _Services
+                              //             ? LinearGradient(
+                              //                 colors: [
+                              //                   Colors.purple.shade500,
+                              //                   Colors.pink.shade200,
+                              //                 ],
+                              //                 begin: Alignment.topCenter,
+                              //                 end: Alignment.bottomCenter,
+                              //               )
+                              //             : LinearGradient(
+                              //                 colors: [
+                              //                   Colors.white,
+                              //                   Colors.white,
+                              //                 ],
+                              //                 begin: Alignment.topCenter,
+                              //                 end: Alignment.bottomCenter,
+                              //               ),
+                              //       ),
+                              //       child: Row(
+                              //         children: [
+                              //           _Services
+                              //               ? Image.asset(
+                              //                   "images/healthbtnwhite.png")
+                              //               : Image.asset(
+                              //                   "images/healthbtnpink.png"),
+                              //           SizedBox(
+                              //             width: MediaQuery.of(context)
+                              //                     .size
+                              //                     .width *
+                              //                 0.05,
+                              //           ),
+                              //           Text(
+                              //             "Services",
+                              //             style: _Services
+                              //                 ? TextStyle(
+                              //                     color: Colors.white,
+                              //                     fontFamily: "DM Sans",
+                              //                     fontSize: 14.0,
+                              //                     fontWeight: FontWeight.w400)
+                              //                 : TextStyle(
+                              //                     color: Colors.black,
+                              //                     fontFamily: "DM Sans",
+                              //                     fontSize: 14.0,
+                              //                     fontWeight: FontWeight.w400,
+                              //                   ),
+                              //           ),
+                              //         ],
+                              //       ),
+                              //     ),
+                              //   ),
+                              // ),
                             ],
                           ),
                         ),
@@ -800,7 +811,7 @@ class _dashboardState extends State<dashboard> {
                                     children: [
                                       mon
                                           ? Text(
-                                              monstarttime + " " + monendtime,
+                                              monstarttime + "  to   " + monendtime,
                                               style: TextStyle(
                                                 height: 1.5,
                                                 fontSize: 14.0,
@@ -959,7 +970,7 @@ class _dashboardState extends State<dashboard> {
                                     children: [
                                       tue
                                           ? Text(
-                                              tuestarttime + " " + tueendtime,
+                                              tuestarttime + "  to   " + tueendtime,
                                               style: TextStyle(
                                                 height: 1.5,
                                                 fontSize: 14.0,
@@ -1118,7 +1129,7 @@ class _dashboardState extends State<dashboard> {
                                     children: [
                                       wed
                                           ? Text(
-                                              wedstarttime + " " + wedendtime,
+                                              wedstarttime + "  to   " + wedendtime,
                                               style: TextStyle(
                                                 height: 1.5,
                                                 fontSize: 14.0,
@@ -1278,7 +1289,7 @@ class _dashboardState extends State<dashboard> {
                                     children: [
                                       thurs
                                           ? Text(
-                                              thursstarttime + " " + thursendtime,
+                                              thursstarttime + "  to   " + thursendtime,
                                               style: TextStyle(
                                                 height: 1.5,
                                                 fontSize: 14.0,
@@ -1438,7 +1449,7 @@ class _dashboardState extends State<dashboard> {
                                     children: [
                                       fri
                                           ? Text(
-                                              fristarttime + " " + friendtime,
+                                              fristarttime + "  to   " + friendtime,
                                               style: TextStyle(
                                                 height: 1.5,
                                                 fontSize: 14.0,
@@ -1598,7 +1609,7 @@ class _dashboardState extends State<dashboard> {
                                     children: [
                                       sat
                                           ? Text(
-                                              satstarttime + " " + satendtime,
+                                              satstarttime + "  to   " + satendtime,
                                               style: TextStyle(
                                                 height: 1.5,
                                                 fontSize: 14.0,
@@ -1758,7 +1769,7 @@ class _dashboardState extends State<dashboard> {
                                     children: [
                                       sun
                                           ? Text(
-                                              sunstarttime + " " + sunendtime,
+                                              sunstarttime + "  to   " + sunendtime,
                                               style: TextStyle(
                                                 height: 1.5,
                                                 fontSize: 14.0,
@@ -1902,7 +1913,20 @@ class _dashboardState extends State<dashboard> {
                         PinkButtons(
                           Buttontext: "APPLY",
                           TextColor: Colors.white,
-                          onpress: () => {},
+                          onpress: () => {
+                            if(state.user.providerType == 'company'){
+                               Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => AddStaff()),
+          )
+                            }
+                            else{
+                              AddServiceDetails()
+                            }
+
+                            
+                          },
                         ),
                       ],
                     ),
@@ -1910,7 +1934,10 @@ class _dashboardState extends State<dashboard> {
                 ),
               ),
             ],
-          ),
+          );
+                      }),
+          
+          
         ),
       ),
     );

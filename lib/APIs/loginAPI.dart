@@ -13,7 +13,7 @@ class Login {
       'Mobile': phonenumber,
       'Password': password,
     };
-
+print(" here i am  " );
     Map<String, String> requestHeaders = {
       'Accept': 'application/json',
     };
@@ -22,17 +22,26 @@ class Login {
 
     http.Response response =
         await http.post(uri, body: body, headers: requestHeaders);
+        print(" called  " );
+
     print("my body " + response.body);
 
     if (response.statusCode == 200) {
+      print(" 200 " );
+
       return User.fromJson(
         json.decode(response.body),
       );
     } else if (response.statusCode == 400) {
+      print(" 400 " );
+
       return User.fromJson(
         json.decode(response.body),
+        
       );
     } else {
+      print(" error " );
+
       throw Exception('Failed to load data!');
     }
   }

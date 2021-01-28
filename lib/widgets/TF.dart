@@ -111,7 +111,7 @@ class country_TF extends StatelessWidget {
                     ),
                   ),
                 ),
-                initialCountryCode: 'PK', //default contry code, NP for Nepal
+                initialCountryCode: 'PK', 
                 onChanged: (phone) {
                   //when phone number country code is changed
                   print(phone.completeNumber); //get complete number

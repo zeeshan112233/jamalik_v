@@ -16,9 +16,11 @@ class GettingStarted extends StatefulWidget {
 class GettingStartedState extends State<GettingStarted> {
   String gender = 'M';
   int radioValue = 0;
+  int radioValue2=0;
   bool rememberMe = false;
   bool valid = true;
   bool isloading = false;
+  String providertype="company";
 
   //confirmpassword textfield
   final TextEditingController _confirmpasswordcontroller =
@@ -56,6 +58,23 @@ class GettingStartedState extends State<GettingStarted> {
           break;
       }
     });
+  }
+
+  void handleRadioValue2Changed(int value) {
+    setState(() {
+      radioValue2 = value;
+      switch (radioValue2) {
+        case 0:
+          providertype = "company";
+          break;
+
+        case 1:
+          providertype = "private";
+          break;
+      }
+    });
+        print(providertype);
+
   }
 
   void _onRememberMeChanged(bool newValue) => setState(() {
@@ -147,7 +166,7 @@ class GettingStartedState extends State<GettingStarted> {
                                     MediaQuery.of(context).size.height * 0.02,
                               ),
                               TF(
-                                controller: _firstnamecontroller,
+                                controller: this._firstnamecontroller,
                                 hintText: 'Zeeshan',
                                 // isPassword: true,
                                 prefixIcon: Icons.person_outline,
@@ -244,6 +263,8 @@ class GettingStartedState extends State<GettingStarted> {
                                   ),
                                 ],
                               ),
+
+
                               Padding(
                                 padding: EdgeInsets.only(
                                   left:
@@ -287,6 +308,31 @@ class GettingStartedState extends State<GettingStarted> {
                                     ? Icons.check_circle
                                     : null,
                                 tfColor: Colors.grey.shade300,
+                              ),
+
+                              
+                                                            new Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  new Radio<int>(
+                                      activeColor: Colors.purple.shade400,
+                                      value: 0,
+                                      groupValue: radioValue2,
+                                      onChanged: handleRadioValue2Changed),
+                                  new Text(
+                                    "Company",
+                                    style: new TextStyle(color: Colors.black),
+                                  ),
+                                  new Radio<int>(
+                                      activeColor: Colors.purple.shade400,
+                                      value: 1,
+                                      groupValue: radioValue2,
+                                      onChanged: handleRadioValue2Changed),
+                                  new Text(
+                                    "Private",
+                                    style: new TextStyle(color: Colors.black),
+                                  ),
+                                ],
                               ),
                               Row(
                                 children: [
@@ -334,7 +380,14 @@ class GettingStartedState extends State<GettingStarted> {
                                 style: TextStyle(
                                     color: Colors.pink.shade600, fontSize: 20),
                               ),
-                              onTap: () => print("Signin touched"),
+                              onTap: () =>{
+ Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => login(),
+          ))
+
+                              }
                             ),
                           ],
                         ),
@@ -428,6 +481,7 @@ class GettingStartedState extends State<GettingStarted> {
                                                   _lastnamecontroller.text,
                                               email: _emailcontroller.text,
                                               gender: this.gender,
+                                              providertype: this.providertype,
                                               password:
                                                   _passwordcontroller.text,
                                               phonenumber:

@@ -12,6 +12,7 @@ class Signup {
     String email,
     String phonenumber,
     String password,
+    String providertype
   }) async {
     Map<String, dynamic> body = {
       'FirstName': firstName,
@@ -20,12 +21,14 @@ class Signup {
       'Gender': gender,
       'Mobile': phonenumber,
       'Password': password,
+      'ProviderType':providertype,
+      'Photo':"http://51.222.107.49/api/Provider/PostProviderImage/"
     };
 
     Map<String, String> requestHeaders = {
       'Accept': 'application/json',
     };
-
+print("a gya h ");
     final uri = 'http://51.222.107.49/api/Provider/ProviderRegistration/';
 
     http.Response response =

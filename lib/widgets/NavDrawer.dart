@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_redux/flutter_redux.dart';
 import 'package:jamalik/Ui/Checkout.dart';
 import 'package:jamalik/Ui/Favourites.dart';
 import 'package:jamalik/Ui/MyServices1.dart';
@@ -11,11 +12,11 @@ import 'package:jamalik/Ui/aboutapp.dart';
 import 'package:jamalik/Ui/coupen.dart';
 import 'package:jamalik/Ui/customersupport.dart';
 import 'package:jamalik/Ui/dashboard.dart';
-import 'package:jamalik/Ui/favourite.dart';
 import 'package:jamalik/Ui/language.dart';
 import 'package:jamalik/Ui/logout.dart';
 import 'package:jamalik/Ui/myservice.dart';
 import 'package:jamalik/Ui/notification.dart';
+import 'package:jamalik/redux/model/app_state.dart';
 
 class NavDrawer extends StatelessWidget {
   NavDrawer({
@@ -135,34 +136,76 @@ class NavDrawer extends StatelessWidget {
                 // ),
 
                 SizedBox(height: 20.0),
-                ListTile(
+
+                                ListTile(
                   title: Text(
-                    'My Services',
+                    'Add Schedule',
                     style: TextStyle(color: Colors.white, fontSize: 20),
                   ),
                   onTap: () => {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => MyServices1(),
+                        builder: (context) => dashboard(),
                       ),
                     )
                   },
                 ),
-                ListTile(
+                
+          StoreConnector<Appstate, Appstate>(
+                      converter: (store) => store.state,
+                      builder: (context, state) {
+                        return Container(
+                          child: state.user.providerType == 'company'?
+
+                                        ListTile(
                   title: Text(
-                    'Providers',
+                    'Add Staff',
                     style: TextStyle(color: Colors.white, fontSize: 20),
                   ),
                   onTap: () => {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => ProviderScreen(),
+                        builder: (context) => dashboard(),
                       ),
                     )
                   },
-                ),
+                )
+                          
+                        :
+                        null);
+                      }),
+
+
+                // ListTile(
+                //   title: Text(
+                //     'My Services',
+                //     style: TextStyle(color: Colors.white, fontSize: 20),
+                //   ),
+                //   onTap: () => {
+                //     Navigator.push(
+                //       context,
+                //       MaterialPageRoute(
+                //         builder: (context) => MyServices1(),
+                //       ),
+                //     )
+                //   },
+                // ),
+                // ListTile(
+                //   title: Text(
+                //     'Providers',
+                //     style: TextStyle(color: Colors.white, fontSize: 20),
+                //   ),
+                //   onTap: () => {
+                //     Navigator.push(
+                //       context,
+                //       MaterialPageRoute(
+                //         builder: (context) => ProviderScreen(),
+                //       ),
+                //     )
+                //   },
+                // ),
                 // ListTile(
                 //   title: Text(
                 //     'Coupons',
@@ -192,64 +235,64 @@ class NavDrawer extends StatelessWidget {
                   },
                 ),
 
-                ListTile(
-                  title: Text(
-                    'Services',
-                    style: TextStyle(color: Colors.white, fontSize: 20),
-                  ),
-                  onTap: () => {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => Servicesscreen(),
-                      ),
-                    )
-                  },
-                ),
+                // ListTile(
+                //   title: Text(
+                //     'Services',
+                //     style: TextStyle(color: Colors.white, fontSize: 20),
+                //   ),
+                //   onTap: () => {
+                //     Navigator.push(
+                //       context,
+                //       MaterialPageRoute(
+                //         builder: (context) => Servicesscreen(),
+                //       ),
+                //     )
+                //   },
+                // ),
 
-                ListTile(
-                  title: Text(
-                    'Payments',
-                    style: TextStyle(color: Colors.white, fontSize: 20),
-                  ),
-                  onTap: () => {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => Payment(),
-                      ),
-                    )
-                  },
-                ),
-                ListTile(
-                  title: Text(
-                    'Favourites',
-                    style: TextStyle(color: Colors.white, fontSize: 20),
-                  ),
-                  onTap: () => {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => Favourite(),
-                      ),
-                    )
-                  },
-                ),
+                // ListTile(
+                //   title: Text(
+                //     'Payments',
+                //     style: TextStyle(color: Colors.white, fontSize: 20),
+                //   ),
+                //   onTap: () => {
+                //     Navigator.push(
+                //       context,
+                //       MaterialPageRoute(
+                //         builder: (context) => Payment(),
+                //       ),
+                //     )
+                //   },
+                // ),
+                // ListTile(
+                //   title: Text(
+                //     'Favourites',
+                //     style: TextStyle(color: Colors.white, fontSize: 20),
+                //   ),
+                //   onTap: () => {
+                //     Navigator.push(
+                //       context,
+                //       MaterialPageRoute(
+                //         builder: (context) => Favourite(),
+                //       ),
+                //     )
+                //   },
+                // ),
 
-                ListTile(
-                  title: Text(
-                    'Paradise Beauty Saloon',
-                    style: TextStyle(color: Colors.white, fontSize: 20),
-                  ),
-                  onTap: () => {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => ParadiseBeautySalon(),
-                      ),
-                    )
-                  },
-                ),
+                // ListTile(
+                //   title: Text(
+                //     'Paradise Beauty Saloon',
+                //     style: TextStyle(color: Colors.white, fontSize: 20),
+                //   ),
+                //   onTap: () => {
+                //     Navigator.push(
+                //       context,
+                //       MaterialPageRoute(
+                //         builder: (context) => ParadiseBeautySalon(),
+                //       ),
+                //     )
+                //   },
+                // ),
                 ListTile(
                   title: Text(
                     'Notification',
@@ -279,20 +322,20 @@ class NavDrawer extends StatelessWidget {
                   },
                 ),
 
-                ListTile(
-                  title: Text(
-                    'Checkout Widget',
-                    style: TextStyle(color: Colors.white, fontSize: 20),
-                  ),
-                  onTap: () => {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => Checkout(),
-                      ),
-                    )
-                  },
-                ),
+                // ListTile(
+                //   title: Text(
+                //     'Checkout Widget',
+                //     style: TextStyle(color: Colors.white, fontSize: 20),
+                //   ),
+                //   onTap: () => {
+                //     Navigator.push(
+                //       context,
+                //       MaterialPageRoute(
+                //         builder: (context) => Checkout(),
+                //       ),
+                //     )
+                //   },
+                // ),
                 
 
                 //                 ListTile(
