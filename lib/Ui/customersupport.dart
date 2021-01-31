@@ -33,7 +33,6 @@ class customersupport extends StatelessWidget {
                   ),
                 ),
               ),
-
               Padding(
                 padding: const EdgeInsets.only(top: 80.0),
                 child: Image.asset("images/Message.png"),

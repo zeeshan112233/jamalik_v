@@ -66,8 +66,8 @@ class _State extends State<home_2> {
                   child: StoreConnector<Appstate, Appstate>(
                       converter: (store) => store.state,
                       builder: (context, state) {
-                        return Text("Welcome "+
-                          state.user.firstName,
+                        return Text(
+                          "Welcome " + state.user.firstName,
                           style: TextStyle(
                               color: Colors.black, fontWeight: FontWeight.w800),
                         );
@@ -610,8 +610,7 @@ class _State extends State<home_2> {
                                                       child: Container(
                                                         child: Text(
                                                             completedarray[
-                                                                    index] 
-                                                               ),
+                                                                index]),
                                                       ),
                                                     ),
                                                   ],

@@ -11,19 +11,17 @@ class AddServiceDetails extends StatefulWidget {
 }
 
 class _AddServiceDetailsState extends State<AddServiceDetails> {
- 
- 
-   final TextEditingController _servicenamecontroller =
+  final TextEditingController _servicenamecontroller =
       new TextEditingController();
-      final TextEditingController _serviceregcontroller =
+  final TextEditingController _serviceregcontroller =
       new TextEditingController();
 
-       final TextEditingController _servicecostcontroller =
+  final TextEditingController _servicecostcontroller =
       new TextEditingController();
- final TextEditingController _servicetimecontroller =
+  final TextEditingController _servicetimecontroller =
       new TextEditingController();
-        String gender = 'M';
-                String language = 'english';
+  String gender = 'M';
+  String language = 'english';
   int radioValue = 0;
   int radioValue2 = 0;
 
@@ -56,7 +54,6 @@ class _AddServiceDetailsState extends State<AddServiceDetails> {
       }
     });
   }
-
 
   static const _mainCategories = [
     'Beauty',
@@ -113,7 +110,6 @@ class _AddServiceDetailsState extends State<AddServiceDetails> {
                         Container(
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.all(Radius.circular(10)),
-                         
                           ),
                           child: Padding(
                             padding: const EdgeInsets.all(8.0),
@@ -150,17 +146,19 @@ class _AddServiceDetailsState extends State<AddServiceDetails> {
                                           child: DropdownButton(
                                               isDense:
                                                   true, // Reduces the dropdowns height by +/- 50%
-                                              icon:
-                                                  Icon(Icons.keyboard_arrow_down),
+                                              icon: Icon(
+                                                  Icons.keyboard_arrow_down),
                                               value: _mainCategory,
-                                              items: _mainCategories.map((item) {
+                                              items:
+                                                  _mainCategories.map((item) {
                                                 return DropdownMenuItem(
                                                   value: item,
                                                   child: Text(item),
                                                 );
                                               }).toList(),
                                               onChanged: (selectedItem) => {
-                                                    if (selectedItem == "Beauty")
+                                                    if (selectedItem ==
+                                                        "Beauty")
                                                       {
                                                         setState(
                                                           () => _mainCategory =
@@ -220,8 +218,6 @@ class _AddServiceDetailsState extends State<AddServiceDetails> {
                                 SizedBox(
                                   height: 10,
                                 ),
-
-                                
                                 Container(
                                   height: 50,
                                   decoration: BoxDecoration(
@@ -253,7 +249,8 @@ class _AddServiceDetailsState extends State<AddServiceDetails> {
                                           child: DropdownButton(
                                             isDense:
                                                 true, // Reduces the dropdowns height by +/- 50%
-                                            icon: Icon(Icons.keyboard_arrow_down),
+                                            icon:
+                                                Icon(Icons.keyboard_arrow_down),
                                             value: _subCategory,
                                             items: _subcategories.map((item) {
                                               return DropdownMenuItem(
@@ -261,7 +258,8 @@ class _AddServiceDetailsState extends State<AddServiceDetails> {
                                                 child: Text(item),
                                               );
                                             }).toList(),
-                                            onChanged: (selectedItem) => setState(
+                                            onChanged: (selectedItem) =>
+                                                setState(
                                               () => _subCategory = selectedItem,
                                             ),
                                           ),
@@ -273,42 +271,38 @@ class _AddServiceDetailsState extends State<AddServiceDetails> {
                                 SizedBox(
                                   height: 10,
                                 ),
-
-
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal:58.0),
-                  child: new Row(
-                                  children: [
-                                    new Radio<int>(
-                                        activeColor: Colors.purple.shade400,
-                                        value: 0,
-                                        groupValue: radioValue,
-                                        onChanged: handleRadioValueChanged),
-                                    new Text(
-                                      "Male",
-                                      style: new TextStyle(color: Colors.black),
-                                    ),
-                                    new Radio<int>(
-                                        activeColor: Colors.purple.shade400,
-                                        value: 1,
-                                        groupValue: radioValue,
-                                        onChanged: handleRadioValueChanged),
-                                    new Text(
-                                      "Female",
-                                      style: new TextStyle(color: Colors.black),
-                                    ),
-                                  ],
+                                Padding(
+                                  padding: const EdgeInsets.symmetric(
+                                      horizontal: 58.0),
+                                  child: new Row(
+                                    children: [
+                                      new Radio<int>(
+                                          activeColor: Colors.purple.shade400,
+                                          value: 0,
+                                          groupValue: radioValue,
+                                          onChanged: handleRadioValueChanged),
+                                      new Text(
+                                        "Male",
+                                        style:
+                                            new TextStyle(color: Colors.black),
+                                      ),
+                                      new Radio<int>(
+                                          activeColor: Colors.purple.shade400,
+                                          value: 1,
+                                          groupValue: radioValue,
+                                          onChanged: handleRadioValueChanged),
+                                      new Text(
+                                        "Female",
+                                        style:
+                                            new TextStyle(color: Colors.black),
+                                      ),
+                                    ],
+                                  ),
                                 ),
-                ),
-
-
-                
-
                               ],
                             ),
                           ),
                         ),
-                       
                         Container(
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.all(Radius.circular(10)),
@@ -317,93 +311,87 @@ class _AddServiceDetailsState extends State<AddServiceDetails> {
                             padding: const EdgeInsets.all(8.0),
                             child: Column(
                               children: [
-
-                                   TF(
+                                TF(
                                   controller: _servicenamecontroller,
                                   hintText: 'Service Name',
                                   // isPassword: true,
                                   prefixIcon: Icons.person_outline,
-                                  suffixIcon: _servicenamecontroller.text.isNotEmpty
-                                      ? Icons.check_circle
-                                      : null,
+                                  suffixIcon:
+                                      _servicenamecontroller.text.isNotEmpty
+                                          ? Icons.check_circle
+                                          : null,
                                   tfColor: Colors.grey.shade300,
                                 ),
-
-                                     TF(
+                                TF(
                                   controller: _serviceregcontroller,
                                   hintText: 'Service Registration',
                                   // isPassword: true,
-                                  prefixIcon: Icons.format_list_numbered_rounded,
-                                  suffixIcon: _serviceregcontroller.text.isNotEmpty
-                                      ? Icons.check_circle
-                                      : null,
+                                  prefixIcon:
+                                      Icons.format_list_numbered_rounded,
+                                  suffixIcon:
+                                      _serviceregcontroller.text.isNotEmpty
+                                          ? Icons.check_circle
+                                          : null,
                                   tfColor: Colors.grey.shade300,
                                 ),
-
-                                                                     TF(
+                                TF(
                                   controller: _servicecostcontroller,
                                   hintText: 'Service Cost',
                                   // isPassword: true,
                                   prefixIcon: Icons.money,
-                                  suffixIcon: _servicecostcontroller.text.isNotEmpty
-                                      ? Icons.check_circle
-                                      : null,
+                                  suffixIcon:
+                                      _servicecostcontroller.text.isNotEmpty
+                                          ? Icons.check_circle
+                                          : null,
                                   tfColor: Colors.grey.shade300,
                                 ),
-
-                                                                     TF(
+                                TF(
                                   controller: _servicetimecontroller,
                                   hintText: 'Service Duration ( Minutes)',
                                   // isPassword: true,
                                   prefixIcon: Icons.lock_clock,
-                                  suffixIcon: _servicetimecontroller.text.isNotEmpty
-                                      ? Icons.check_circle
-                                      : null,
+                                  suffixIcon:
+                                      _servicetimecontroller.text.isNotEmpty
+                                          ? Icons.check_circle
+                                          : null,
                                   tfColor: Colors.grey.shade300,
                                 ),
-                              
-new Row(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  new Radio<int>(
-                                      activeColor: Colors.purple.shade400,
-                                      value: 0,
-                                      groupValue: radioValue2,
-                                      onChanged: handleRadioValue2Changed),
-                                  new Text(
-                                    "English",
-                                    style: new TextStyle(color: Colors.black),
+                                new Row(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    new Radio<int>(
+                                        activeColor: Colors.purple.shade400,
+                                        value: 0,
+                                        groupValue: radioValue2,
+                                        onChanged: handleRadioValue2Changed),
+                                    new Text(
+                                      "English",
+                                      style: new TextStyle(color: Colors.black),
+                                    ),
+                                    new Radio<int>(
+                                        activeColor: Colors.purple.shade400,
+                                        value: 1,
+                                        groupValue: radioValue2,
+                                        onChanged: handleRadioValue2Changed),
+                                    new Text(
+                                      "Arabic",
+                                      style: new TextStyle(color: Colors.black),
+                                    ),
+                                  ],
+                                ),
+                                Padding(
+                                  padding: const EdgeInsets.all(18.0),
+                                  child: Row(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: [
+                                      PinkButtons(
+                                        Buttontext: "Continue",
+                                        TextColor: Colors.white,
+                                        onpress: () => {},
+                                      ),
+                                    ],
                                   ),
-                                  new Radio<int>(
-                                      activeColor: Colors.purple.shade400,
-                                      value: 1,
-                                      groupValue: radioValue2,
-                                      onChanged: handleRadioValue2Changed),
-                                  new Text(
-                                    "Arabic",
-                                    style: new TextStyle(color: Colors.black),
-                                  ),
-                                ],
-                              ),
-                    Padding(
-                      padding: const EdgeInsets.all(18.0),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          PinkButtons(
-                            Buttontext: "Continue",
-                            TextColor: Colors.white,
-                            onpress: () => {
- 
-                              
-
-            
-                            },
-                          ),
-                        ],
-                      ),
-                    ),
-
+                                ),
                               ],
                             ),
                           ),

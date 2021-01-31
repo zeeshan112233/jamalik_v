@@ -459,10 +459,7 @@ class ProfileState extends State<Profile> {
                                                 fontSize: 16.0),
                                           }
                                         else
-                                          {
-                                           
-                                          },
-
+                                          {},
                                       },
                                     )
                                   : Container(

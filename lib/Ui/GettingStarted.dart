@@ -16,11 +16,11 @@ class GettingStarted extends StatefulWidget {
 class GettingStartedState extends State<GettingStarted> {
   String gender = 'M';
   int radioValue = 0;
-  int radioValue2=0;
+  int radioValue2 = 0;
   bool rememberMe = false;
   bool valid = true;
   bool isloading = false;
-  String providertype="company";
+  String providertype = "company";
 
   //confirmpassword textfield
   final TextEditingController _confirmpasswordcontroller =
@@ -73,8 +73,7 @@ class GettingStartedState extends State<GettingStarted> {
           break;
       }
     });
-        print(providertype);
-
+    print(providertype);
   }
 
   void _onRememberMeChanged(bool newValue) => setState(() {
@@ -263,8 +262,6 @@ class GettingStartedState extends State<GettingStarted> {
                                   ),
                                 ],
                               ),
-
-
                               Padding(
                                 padding: EdgeInsets.only(
                                   left:
@@ -309,9 +306,7 @@ class GettingStartedState extends State<GettingStarted> {
                                     : null,
                                 tfColor: Colors.grey.shade300,
                               ),
-
-                              
-                                                            new Row(
+                              new Row(
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
                                   new Radio<int>(
@@ -375,20 +370,19 @@ class GettingStartedState extends State<GettingStarted> {
                           children: [
                             Text(" Already have an Account? "),
                             GestureDetector(
-                              child: Text(
-                                "Sign in!",
-                                style: TextStyle(
-                                    color: Colors.pink.shade600, fontSize: 20),
-                              ),
-                              onTap: () =>{
- Navigator.push(
-          context,
-          MaterialPageRoute(
-            builder: (context) => login(),
-          ))
-
-                              }
-                            ),
+                                child: Text(
+                                  "Sign in!",
+                                  style: TextStyle(
+                                      color: Colors.pink.shade600,
+                                      fontSize: 20),
+                                ),
+                                onTap: () => {
+                                      Navigator.push(
+                                          context,
+                                          MaterialPageRoute(
+                                            builder: (context) => login(),
+                                          ))
+                                    }),
                           ],
                         ),
                         SizedBox(

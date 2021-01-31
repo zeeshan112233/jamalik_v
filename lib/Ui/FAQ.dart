@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:jamalik/widgets/header_pink.dart';
 
-
 class question extends StatefulWidget {
   question({
     this.myquestion,
@@ -89,7 +88,8 @@ class _FaqState extends State<Faq> {
   var myQuestions = [
     {
       "question": "What is VAO-Assistant?",
-      "answer": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis maximus feugiat leo. Duis nec vestibulum tortor. Curabitur non felis sit amet risus feugiat sollicitudin in quis orci. Nam id est lectus. Nunc pellentesque vel risus ultrices posuere. Aenean dui urna, finibus ut augue a, euismod consequat erat. Nulla facilisi. Aliquam a erat purus. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur eu arcu eu urna rhoncus lacinia id nec mauris. Donec dictum vehicula egestas. Proin molestie tempor augue, sit amet pharetra dui dapibus in.",
+      "answer":
+          "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis maximus feugiat leo. Duis nec vestibulum tortor. Curabitur non felis sit amet risus feugiat sollicitudin in quis orci. Nam id est lectus. Nunc pellentesque vel risus ultrices posuere. Aenean dui urna, finibus ut augue a, euismod consequat erat. Nulla facilisi. Aliquam a erat purus. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur eu arcu eu urna rhoncus lacinia id nec mauris. Donec dictum vehicula egestas. Proin molestie tempor augue, sit amet pharetra dui dapibus in.",
     },
     {
       "question": "Where can i see my appointments?",

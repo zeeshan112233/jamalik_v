@@ -16,6 +16,7 @@ import 'package:jamalik/Ui/Servicesscreen.dart';
 import 'package:jamalik/Ui/Verifyidentity.dart';
 import 'package:jamalik/Ui/home_2.dart';
 import 'package:jamalik/Ui/login.dart';
+import 'package:jamalik/Ui/staff.dart';
 import 'package:jamalik/redux/model/app_state.dart';
 import 'package:jamalik/redux/reducers.dart';
 import 'package:jamalik/widgets/Serviceswidget.dart';
@@ -44,7 +45,7 @@ class MyApp extends StatelessWidget {
       store: store,
       child: MaterialApp(
         title: "Welcome",
-        home: new SplashScreen(),
+        home: new login(),
       ),
     );
   }
