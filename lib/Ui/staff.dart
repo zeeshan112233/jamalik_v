@@ -119,12 +119,12 @@ class staffScreenState extends State<staffScreen> {
                   : Expanded(
                       child: Container(
                         child: TouchableOpacity(
-            onTap: () =>  Navigator.push(
-          context,
-          MaterialPageRoute(
-            builder: (context) => AddServiceDetails(),
-          )),
-                                                  child: ListView.builder(
+                          onTap: () => Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => AddServiceDetails(),
+                              )),
+                          child: ListView.builder(
                               itemCount: staff.length,
                               itemBuilder: (context, index) {
                                 return Padding(
@@ -140,8 +140,8 @@ class staffScreenState extends State<staffScreen> {
                                           color: Colors.grey.withOpacity(0.2),
                                           spreadRadius: 5,
                                           blurRadius: 7,
-                                          offset: Offset(
-                                              0, 3), // changes position of shadow
+                                          offset: Offset(0,
+                                              3), // changes position of shadow
                                         ),
                                       ],
                                     ),
@@ -158,7 +158,13 @@ class staffScreenState extends State<staffScreen> {
                                                     .height *
                                                 0.02,
                                           ),
-                                          child: Image.asset("images/make.png",width: MediaQuery.of(context).size.height*0.1,),
+                                          child: Image.asset(
+                                            "images/make.png",
+                                            width: MediaQuery.of(context)
+                                                    .size
+                                                    .height *
+                                                0.1,
+                                          ),
                                         ),
                                         SizedBox(
                                           width: 10,
@@ -183,34 +189,32 @@ class staffScreenState extends State<staffScreen> {
                         ),
                       ),
                     ),
-
-                                                    Padding(
-                                  padding: const EdgeInsets.all(18.0),
-                                  child: Row(
-                                    mainAxisAlignment: MainAxisAlignment.center,
-                                    children: [
-                                      !isloading
-                                          ? PinkButtons(
-                                              TextColor: Colors.white,
-                                              Buttontext: "ADD NEW STAFF",
-                                              onpress: () => {
-                                                Navigator.push(
-                                                    context,
-                                                    MaterialPageRoute(
-                                                      builder: (context) =>
-                                                          AddStaff(),
-                                                    ))
-                                              },
-                                            )
-                                          : Container(
-                                              // child: Center(
-                                              //   child:
-                                              //       CircularProgressIndicator(),
-                                              // ),
-                                            ),
-                                    ],
-                                  ),
-                                ),
+              Padding(
+                padding: const EdgeInsets.all(18.0),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    !isloading
+                        ? PinkButtons(
+                            TextColor: Colors.white,
+                            Buttontext: "ADD NEW STAFF",
+                            onpress: () => {
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) => AddStaff(),
+                                  ))
+                            },
+                          )
+                        : Container(
+                            // child: Center(
+                            //   child:
+                            //       CircularProgressIndicator(),
+                            // ),
+                            ),
+                  ],
+                ),
+              ),
             ],
           ),
         ),
