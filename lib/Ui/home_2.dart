@@ -130,7 +130,6 @@ class _State extends State<home_2> {
                                       end: Alignment.bottomCenter,
                                     ),
                                     borderRadius: BorderRadius.circular(20),
-                                    color: Colors.green,
                                     boxShadow: [],
                                   ),
                                   height: 80,
@@ -142,31 +141,90 @@ class _State extends State<home_2> {
                                         mainAxisAlignment:
                                             MainAxisAlignment.center,
                                         children: [
-                                          Icon(
-                                            Icons.access_alarm,
-                                            color: Colors.white,
-                                            size: 30.0,
+                                          Column(
+                                            children: [
+                                              Icon(
+                                                Icons.access_alarm,
+                                                color: Colors.white,
+                                                size: 30.0,
+                                              ),
+                                            ],
                                           ),
                                           SizedBox(width: 5),
-                                          Text(
-                                            "Sales Today",
-                                            style: TextStyle(
-                                              color: Colors.white,
-                                              fontWeight: FontWeight.w500,
-                                            ),
+                                          Column(
+                                            children: [
+                                              Text(
+                                                "Sales Today",
+                                                style: TextStyle(
+                                                  color: Colors.white,
+                                                  fontWeight: FontWeight.w500,
+                                                ),
+                                              ),
+                                              Text(
+                                                "QAR 300",
+                                                style: TextStyle(
+                                                  color: Colors.white,
+                                                  fontWeight: FontWeight.w500,
+                                                ),
+                                              ),
+                                            ],
                                           ),
                                         ],
                                       ),
+                                    ],
+                                  ),
+                                ),
+
+                                Container(
+                                  /////////////////////////
+                                  decoration: BoxDecoration(
+                                    gradient: LinearGradient(
+                                      colors: [
+                                        Colors.purple.shade300,
+                                        Colors.pink.shade200,
+                                      ],
+                                      begin: Alignment.topCenter,
+                                      end: Alignment.bottomCenter,
+                                    ),
+                                    borderRadius: BorderRadius.circular(20),
+                                    boxShadow: [],
+                                  ),
+                                  height: 80,
+                                  width: 140,
+                                  child: Column(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: [
                                       Row(
                                         mainAxisAlignment:
                                             MainAxisAlignment.center,
                                         children: [
-                                          Text(
-                                            "QAR 300",
-                                            style: TextStyle(
-                                              color: Colors.white,
-                                              fontWeight: FontWeight.w500,
-                                            ),
+                                          Column(
+                                            children: [
+                                              Icon(
+                                                Icons.list_alt_rounded,
+                                                color: Colors.white,
+                                                size: 30.0,
+                                              ),
+                                            ],
+                                          ),
+                                          SizedBox(width: 5),
+                                          Column(
+                                            children: [
+                                              Text(
+                                                "Weekly Sales",
+                                                style: TextStyle(
+                                                  color: Colors.white,
+                                                  fontWeight: FontWeight.w500,
+                                                ),
+                                              ),
+                                              Text(
+                                                "QAR 800",
+                                                style: TextStyle(
+                                                  color: Colors.white,
+                                                  fontWeight: FontWeight.w500,
+                                                ),
+                                              ),
+                                            ],
                                           ),
                                         ],
                                       ),
@@ -174,70 +232,18 @@ class _State extends State<home_2> {
                                   ),
                                 ),
                                 //weekly
-                                Container(
-                                  decoration: BoxDecoration(
-                                    gradient: LinearGradient(
-                                      colors: [
-                                        Colors.purple.shade300,
-                                        Colors.pink.shade200,
-                                      ],
-                                      begin: Alignment.topCenter,
-                                      end: Alignment.bottomCenter,
-                                    ),
-                                    borderRadius: BorderRadius.circular(20),
-                                    color: Colors.green,
-                                    boxShadow: [],
-                                  ),
-                                  height: 80,
-                                  width: 140,
-                                  child: Column(
-                                    mainAxisAlignment: MainAxisAlignment.center,
-                                    children: [
-                                      Row(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.center,
-                                        children: [
-                                          Icon(
-                                            Icons.alarm_on,
-                                            color: Colors.white,
-                                            size: 30.0,
-                                          ),
-                                          SizedBox(width: 5),
-                                          Text(
-                                            "Weekly Sales",
-                                            style: TextStyle(
-                                              color: Colors.white,
-                                              fontWeight: FontWeight.w500,
-                                            ),
-                                          ),
-                                        ],
-                                      ),
-                                      Row(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.center,
-                                        children: [
-                                          Text(
-                                            "QAR 300",
-                                            style: TextStyle(
-                                              color: Colors.white,
-                                              fontWeight: FontWeight.w500,
-                                            ),
-                                          ),
-                                        ],
-                                      ),
-                                    ],
-                                  ),
-                                ),
                               ],
                             ),
                             SizedBox(
                               height: MediaQuery.of(context).size.width * 0.05,
                             ),
                             //Monthly
+
                             Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
                                 Container(
+                                  /////////////////////////
                                   decoration: BoxDecoration(
                                     gradient: LinearGradient(
                                       colors: [
@@ -248,7 +254,6 @@ class _State extends State<home_2> {
                                       end: Alignment.bottomCenter,
                                     ),
                                     borderRadius: BorderRadius.circular(20),
-                                    color: Colors.green,
                                     boxShadow: [],
                                   ),
                                   height: 80,
@@ -260,38 +265,42 @@ class _State extends State<home_2> {
                                         mainAxisAlignment:
                                             MainAxisAlignment.center,
                                         children: [
-                                          Icon(
-                                            Icons.addchart_rounded,
-                                            color: Colors.white,
-                                            size: 30.0,
+                                          Column(
+                                            children: [
+                                              Icon(
+                                                Icons.calendar_today_outlined,
+                                                color: Colors.white,
+                                                size: 30.0,
+                                              ),
+                                            ],
                                           ),
                                           SizedBox(width: 5),
-                                          Text(
-                                            "Monthly Sales",
-                                            style: TextStyle(
-                                              color: Colors.white,
-                                              fontWeight: FontWeight.w500,
-                                            ),
-                                          ),
-                                        ],
-                                      ),
-                                      Row(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.center,
-                                        children: [
-                                          Text(
-                                            "QAR 300",
-                                            style: TextStyle(
-                                              color: Colors.white,
-                                              fontWeight: FontWeight.w500,
-                                            ),
+                                          Column(
+                                            children: [
+                                              Text(
+                                                "Monthly Sales",
+                                                style: TextStyle(
+                                                  color: Colors.white,
+                                                  fontWeight: FontWeight.w500,
+                                                ),
+                                              ),
+                                              Text(
+                                                "QAR 900",
+                                                style: TextStyle(
+                                                  color: Colors.white,
+                                                  fontWeight: FontWeight.w500,
+                                                ),
+                                              ),
+                                            ],
                                           ),
                                         ],
                                       ),
                                     ],
                                   ),
                                 ),
+
                                 Container(
+                                  /////////////////////////
                                   decoration: BoxDecoration(
                                     gradient: LinearGradient(
                                       colors: [
@@ -302,7 +311,6 @@ class _State extends State<home_2> {
                                       end: Alignment.bottomCenter,
                                     ),
                                     borderRadius: BorderRadius.circular(20),
-                                    color: Colors.green,
                                     boxShadow: [],
                                   ),
                                   height: 80,
@@ -314,37 +322,40 @@ class _State extends State<home_2> {
                                         mainAxisAlignment:
                                             MainAxisAlignment.center,
                                         children: [
-                                          Icon(
-                                            Icons.access_alarm,
-                                            color: Colors.white,
-                                            size: 30.0,
+                                          Column(
+                                            children: [
+                                              Icon(
+                                                Icons.comment_bank_rounded,
+                                                color: Colors.white,
+                                                size: 30.0,
+                                              ),
+                                            ],
                                           ),
                                           SizedBox(width: 5),
-                                          Text(
-                                            "Daily Sales",
-                                            style: TextStyle(
-                                              color: Colors.white,
-                                              fontWeight: FontWeight.w500,
-                                            ),
-                                          ),
-                                        ],
-                                      ),
-                                      Row(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.center,
-                                        children: [
-                                          Text(
-                                            "QAR 300",
-                                            style: TextStyle(
-                                              color: Colors.white,
-                                              fontWeight: FontWeight.w500,
-                                            ),
+                                          Column(
+                                            children: [
+                                              Text(
+                                                "Total Sales",
+                                                style: TextStyle(
+                                                  color: Colors.white,
+                                                  fontWeight: FontWeight.w500,
+                                                ),
+                                              ),
+                                              Text(
+                                                "QAR 1800",
+                                                style: TextStyle(
+                                                  color: Colors.white,
+                                                  fontWeight: FontWeight.w500,
+                                                ),
+                                              ),
+                                            ],
                                           ),
                                         ],
                                       ),
                                     ],
                                   ),
                                 ),
+                                //weekly
                               ],
                             ),
                           ],
@@ -519,7 +530,7 @@ class _State extends State<home_2> {
                                             child: Row(
                                               children: [
                                                 completed
-                                                    ?Icon(
+                                                    ? Icon(
                                                         Icons
                                                             .assignment_turned_in,
                                                         color: Colors.white,
