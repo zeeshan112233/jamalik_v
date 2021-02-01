@@ -266,8 +266,7 @@ class _AddServiceDetailsState extends State<AddServiceDetails> {
                                                   item,
                                                   style: TextStyle(
                                                       fontSize: 12,
-                                                      fontWeight:
-                                                          FontWeight.bold),
+),
                                                 ),
                                               );
                                             }).toList(),
@@ -302,7 +301,7 @@ class _AddServiceDetailsState extends State<AddServiceDetails> {
                                     child: Row(
                                       children: [
                                         Icon(
-                                          Icons.miscellaneous_services_rounded,
+                                          Icons.masks_outlined,
                                           color: Colors.grey[600],
                                           //size: 1.0,
                                         ),
@@ -357,7 +356,7 @@ class _AddServiceDetailsState extends State<AddServiceDetails> {
                                   controller: _servicenamecontroller,
                                   hintText: 'Service Name',
                                   // isPassword: true,
-                                  prefixIcon: Icons.person_outline,
+                                  prefixIcon: Icons.design_services,
                                   suffixIcon:
                                       _servicenamecontroller.text.isNotEmpty
                                           ? Icons.check_circle
@@ -416,7 +415,7 @@ class _AddServiceDetailsState extends State<AddServiceDetails> {
                                     child: Row(
                                       children: [
                                         Icon(
-                                          Icons.miscellaneous_services_rounded,
+                                          Icons.g_translate_outlined,
                                           color: Colors.grey[600],
                                           //size: 1.0,
                                         ),
@@ -482,19 +481,19 @@ class _AddServiceDetailsState extends State<AddServiceDetails> {
                                           children: [
                                             Icon(
                                               Icons
-                                                  .miscellaneous_services_rounded,
+                                                  .set_meal_sharp,
                                               color: Colors.grey[600],
                                               //size: 1.0,
                                             ),
                                             SizedBox(
                                               width: 15,
                                             ),
-                                            Text("Services Included : "),
+                                            Text("Facilities Included : ",style: TextStyle(fontSize: 18,fontWeight:FontWeight.bold,color: Colors.grey[600])),
                                           ],
                                         ),
                                         CheckboxListTile(
                                           title: const Text('Coffee'),
-                                          secondary: const Icon(Icons.web),
+                                          secondary: const Icon(Icons.countertops_outlined),
                                           activeColor: Colors.pink[400],
                                           checkColor: Colors.white,
                                           selected: cofee,
@@ -507,7 +506,7 @@ class _AddServiceDetailsState extends State<AddServiceDetails> {
                                         ),
                                         CheckboxListTile(
                                           title: const Text('Tea'),
-                                          secondary: const Icon(Icons.web),
+                                          secondary: const Icon(Icons.countertops_outlined),
                                           activeColor: Colors.pink[400],
                                           checkColor: Colors.white,
                                           selected: Tea,
@@ -520,7 +519,7 @@ class _AddServiceDetailsState extends State<AddServiceDetails> {
                                         ),
                                         CheckboxListTile(
                                           title: const Text('Wifi'),
-                                          secondary: const Icon(Icons.web),
+                                          secondary: const Icon(Icons.wifi),
                                           activeColor: Colors.pink[400],
                                           checkColor: Colors.white,
                                           selected: Wifi,
@@ -534,7 +533,7 @@ class _AddServiceDetailsState extends State<AddServiceDetails> {
 
                                                                                 CheckboxListTile(
                                           title: const Text('Kids Place'),
-                                          secondary: const Icon(Icons.web),
+                                          secondary: const Icon(Icons.king_bed_sharp),
                                           activeColor: Colors.pink[400],
                                           checkColor: Colors.white,
                                           selected: Kids,
@@ -547,7 +546,7 @@ class _AddServiceDetailsState extends State<AddServiceDetails> {
                                         ),
                                         CheckboxListTile(
                                           title: const Text('Waiting Place'),
-                                          secondary: const Icon(Icons.web),
+                                          secondary: const Icon(Icons.home_outlined),
                                           activeColor: Colors.pink[400],
                                           checkColor: Colors.white,
                                           selected: Waiting,

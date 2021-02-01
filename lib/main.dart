@@ -45,7 +45,7 @@ class MyApp extends StatelessWidget {
       store: store,
       child: MaterialApp(
         title: "Welcome",
-        home: new SplashScreen(),
+        home: new login()
       ),
     );
   }

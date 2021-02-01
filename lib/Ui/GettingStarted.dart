@@ -561,7 +561,9 @@ class GettingStartedState extends State<GettingStarted> {
                   ),
                   color: Colors.white,
                 ),
-                child: Image.asset('images/Passwordimage.png'),
+                child: Image.asset(
+                  'images/loginimage.png',
+                ),
               ),
             ),
             Positioned(

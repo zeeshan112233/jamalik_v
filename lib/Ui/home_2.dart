@@ -428,25 +428,33 @@ class _State extends State<home_2> {
                                             child: Row(
                                               children: [
                                                 pending
-                                                    ? Image.asset(
-                                                        "images/beautybtnwhite.png")
-                                                    : Image.asset(
-                                                        "images/beautybtnpink.png"),
+                                                    ? Icon(
+                                                        Icons
+                                                            .pending_actions_sharp,
+                                                        color: Colors.white,
+                                                        //size: 1.0,
+                                                      )
+                                                    : Icon(
+                                                        Icons
+                                                            .pending_actions_sharp,
+                                                        color: Colors.pink[300],
+                                                        //size: 1.0,
+                                                      ),
                                                 SizedBox(
                                                   width: MediaQuery.of(context)
                                                           .size
                                                           .width *
-                                                      0.05,
+                                                      0.03,
                                                 ),
                                                 Text(
-                                                  "pending",
+                                                  "Pending",
                                                   style: pending
                                                       ? TextStyle(
                                                           color: Colors.white,
                                                           fontFamily: "DM Sans",
-                                                          fontSize: 14.0,
+                                                          fontSize: 16.0,
                                                           fontWeight:
-                                                              FontWeight.w400)
+                                                              FontWeight.bold)
                                                       : TextStyle(
                                                           color: Colors.black,
                                                           fontFamily: "DM Sans",
@@ -511,15 +519,23 @@ class _State extends State<home_2> {
                                             child: Row(
                                               children: [
                                                 completed
-                                                    ? Image.asset(
-                                                        "images/beautybtnwhite.png")
-                                                    : Image.asset(
-                                                        "images/beautybtnpink.png"),
+                                                    ?Icon(
+                                                        Icons
+                                                            .assignment_turned_in,
+                                                        color: Colors.white,
+                                                        //size: 1.0,
+                                                      )
+                                                    : Icon(
+                                                        Icons
+                                                            .assignment_turned_in,
+                                                        color: Colors.pink[300],
+                                                        //size: 1.0,
+                                                      ),
                                                 SizedBox(
                                                   width: MediaQuery.of(context)
                                                           .size
                                                           .width *
-                                                      0.05,
+                                                      0.04,
                                                 ),
                                                 Text(
                                                   "Completed",
@@ -527,9 +543,9 @@ class _State extends State<home_2> {
                                                       ? TextStyle(
                                                           color: Colors.white,
                                                           fontFamily: "DM Sans",
-                                                          fontSize: 14.0,
+                                                          fontSize: 15.0,
                                                           fontWeight:
-                                                              FontWeight.w400)
+                                                              FontWeight.bold)
                                                       : TextStyle(
                                                           color: Colors.black,
                                                           fontFamily: "DM Sans",

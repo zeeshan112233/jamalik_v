@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:jamalik/APIs/getStaffApi.dart';
+import 'package:jamalik/Ui/AddServiceDetails.dart';
 import 'package:jamalik/Ui/AddStaff.dart';
 import 'package:jamalik/widgets/header_pink.dart';
+import 'package:touchable_opacity/touchable_opacity.dart';
 
 import '../Buttons.dart';
 
@@ -116,62 +118,69 @@ class staffScreenState extends State<staffScreen> {
                     )
                   : Expanded(
                       child: Container(
-                        child: ListView.builder(
-                            itemCount: staff.length,
-                            itemBuilder: (context, index) {
-                              return Padding(
-                                padding: const EdgeInsets.symmetric(
-                                    vertical: 5.0, horizontal: 18),
-                                child: Container(
-                                  decoration: BoxDecoration(
-                                    color: Colors.white,
-                                    borderRadius:
-                                        BorderRadius.all(Radius.circular(10)),
-                                    boxShadow: [
-                                      BoxShadow(
-                                        color: Colors.grey.withOpacity(0.2),
-                                        spreadRadius: 5,
-                                        blurRadius: 7,
-                                        offset: Offset(
-                                            0, 3), // changes position of shadow
-                                      ),
-                                    ],
-                                  ),
-                                  child: Row(
-                                    children: [
-                                      Padding(
-                                        padding: EdgeInsets.symmetric(
-                                          horizontal: MediaQuery.of(context)
-                                                  .size
-                                                  .width *
-                                              0.03,
-                                          vertical: MediaQuery.of(context)
-                                                  .size
-                                                  .height *
-                                              0.02,
+                        child: TouchableOpacity(
+            onTap: () =>  Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => AddServiceDetails(),
+          )),
+                                                  child: ListView.builder(
+                              itemCount: staff.length,
+                              itemBuilder: (context, index) {
+                                return Padding(
+                                  padding: const EdgeInsets.symmetric(
+                                      vertical: 5.0, horizontal: 18),
+                                  child: Container(
+                                    decoration: BoxDecoration(
+                                      color: Colors.white,
+                                      borderRadius:
+                                          BorderRadius.all(Radius.circular(10)),
+                                      boxShadow: [
+                                        BoxShadow(
+                                          color: Colors.grey.withOpacity(0.2),
+                                          spreadRadius: 5,
+                                          blurRadius: 7,
+                                          offset: Offset(
+                                              0, 3), // changes position of shadow
                                         ),
-                                        child: Image.asset("images/make.png",width: MediaQuery.of(context).size.height*0.1,),
-                                      ),
-                                      SizedBox(
-                                        width: 10,
-                                      ),
-                                      Column(
-                                        children: [
-                                          Text(
-                                            staff[index]['FirstName'],
-                                            style: TextStyle(fontSize: 25),
+                                      ],
+                                    ),
+                                    child: Row(
+                                      children: [
+                                        Padding(
+                                          padding: EdgeInsets.symmetric(
+                                            horizontal: MediaQuery.of(context)
+                                                    .size
+                                                    .width *
+                                                0.03,
+                                            vertical: MediaQuery.of(context)
+                                                    .size
+                                                    .height *
+                                                0.02,
                                           ),
-                                          Text(
-                                            staff[index]['Email'],
-                                            style: TextStyle(fontSize: 20),
-                                          ),
-                                        ],
-                                      ),
-                                    ],
+                                          child: Image.asset("images/make.png",width: MediaQuery.of(context).size.height*0.1,),
+                                        ),
+                                        SizedBox(
+                                          width: 10,
+                                        ),
+                                        Column(
+                                          children: [
+                                            Text(
+                                              staff[index]['FirstName'],
+                                              style: TextStyle(fontSize: 25),
+                                            ),
+                                            Text(
+                                              staff[index]['Email'],
+                                              style: TextStyle(fontSize: 20),
+                                            ),
+                                          ],
+                                        ),
+                                      ],
+                                    ),
                                   ),
-                                ),
-                              );
-                            }),
+                                );
+                              }),
+                        ),
                       ),
                     ),
 
@@ -194,10 +203,10 @@ class staffScreenState extends State<staffScreen> {
                                               },
                                             )
                                           : Container(
-                                              child: Center(
-                                                child:
-                                                    CircularProgressIndicator(),
-                                              ),
+                                              // child: Center(
+                                              //   child:
+                                              //       CircularProgressIndicator(),
+                                              // ),
                                             ),
                                     ],
                                   ),
