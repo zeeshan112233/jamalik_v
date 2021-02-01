@@ -20,12 +20,19 @@ class _AddServiceDetailsState extends State<AddServiceDetails> {
       new TextEditingController();
   final TextEditingController _servicetimecontroller =
       new TextEditingController();
+  bool cofee = false;
+  bool Tea = false;
+  bool Wifi = false;
+  bool Kids = false;
+  bool Waiting = false;
+
   String gender = 'M';
   String language = 'english';
+
   int radioValue = 0;
   int radioValue2 = 0;
 
-  void handleRadioValueChanged(int value) {
+  void GenderRadio(int value) {
     setState(() {
       radioValue = value;
       switch (radioValue) {
@@ -40,7 +47,7 @@ class _AddServiceDetailsState extends State<AddServiceDetails> {
     });
   }
 
-  void handleRadioValue2Changed(int value) {
+  void languageRadio(int value) {
     setState(() {
       radioValue2 = value;
       switch (radioValue2) {
@@ -55,7 +62,7 @@ class _AddServiceDetailsState extends State<AddServiceDetails> {
     });
   }
 
-  static const _mainCategories = [
+  var _mainCategories = [
     'Beauty',
     'Health',
     'Others',
@@ -116,9 +123,9 @@ class _AddServiceDetailsState extends State<AddServiceDetails> {
                             child: Column(
                               children: [
                                 Container(
-                                  height: 50,
+                                  height: 55,
                                   decoration: BoxDecoration(
-                                    color: Colors.white,
+                                    color: Colors.grey.shade300,
                                     border: Border.all(
                                       color: Colors.grey
                                           .shade300, //                   <--- border color
@@ -192,7 +199,7 @@ class _AddServiceDetailsState extends State<AddServiceDetails> {
                                                                 "Massage",
                                                                 "Sports Training",
                                                                 "Private Doctor",
-                                                                "Diagnosis / Examination",
+                                                                "Diagnosis ",
                                                               ]
                                                             }),
                                                       }
@@ -216,12 +223,12 @@ class _AddServiceDetailsState extends State<AddServiceDetails> {
                                   ),
                                 ),
                                 SizedBox(
-                                  height: 10,
+                                  height: 20,
                                 ),
                                 Container(
-                                  height: 50,
+                                  height: 55,
                                   decoration: BoxDecoration(
-                                    color: Colors.white,
+                                    color: Colors.grey.shade300,
                                     border: Border.all(
                                       color: Colors.grey
                                           .shade300, //                   <--- border color
@@ -255,7 +262,13 @@ class _AddServiceDetailsState extends State<AddServiceDetails> {
                                             items: _subcategories.map((item) {
                                               return DropdownMenuItem(
                                                 value: item,
-                                                child: Text(item),
+                                                child: Text(
+                                                  item,
+                                                  style: TextStyle(
+                                                      fontSize: 12,
+                                                      fontWeight:
+                                                          FontWeight.bold),
+                                                ),
                                               );
                                             }).toList(),
                                             onChanged: (selectedItem) =>
@@ -271,32 +284,61 @@ class _AddServiceDetailsState extends State<AddServiceDetails> {
                                 SizedBox(
                                   height: 10,
                                 ),
-                                Padding(
-                                  padding: const EdgeInsets.symmetric(
-                                      horizontal: 58.0),
-                                  child: new Row(
-                                    children: [
-                                      new Radio<int>(
-                                          activeColor: Colors.purple.shade400,
-                                          value: 0,
-                                          groupValue: radioValue,
-                                          onChanged: handleRadioValueChanged),
-                                      new Text(
-                                        "Male",
-                                        style:
-                                            new TextStyle(color: Colors.black),
-                                      ),
-                                      new Radio<int>(
-                                          activeColor: Colors.purple.shade400,
-                                          value: 1,
-                                          groupValue: radioValue,
-                                          onChanged: handleRadioValueChanged),
-                                      new Text(
-                                        "Female",
-                                        style:
-                                            new TextStyle(color: Colors.black),
-                                      ),
-                                    ],
+                                Container(
+                                  height: 55,
+                                  decoration: BoxDecoration(
+                                    color: Colors.grey.shade300,
+                                    border: Border.all(
+                                      color: Colors.grey
+                                          .shade300, //                   <--- border color
+                                    ),
+                                    borderRadius: BorderRadius.all(
+                                      Radius.circular(20),
+                                    ),
+                                  ),
+                                  child: Padding(
+                                    padding: const EdgeInsets.symmetric(
+                                        horizontal: 15),
+                                    child: Row(
+                                      children: [
+                                        Icon(
+                                          Icons.miscellaneous_services_rounded,
+                                          color: Colors.grey[600],
+                                          //size: 1.0,
+                                        ),
+                                        SizedBox(
+                                          width: 15,
+                                        ),
+                                        Text("Service For : "),
+                                        Spacer(),
+                                        new Row(
+                                          children: [
+                                            new Radio<int>(
+                                                activeColor:
+                                                    Colors.purple.shade400,
+                                                value: 0,
+                                                groupValue: radioValue,
+                                                onChanged: GenderRadio),
+                                            new Text(
+                                              "Male",
+                                              style: new TextStyle(
+                                                  color: Colors.black),
+                                            ),
+                                            new Radio<int>(
+                                                activeColor:
+                                                    Colors.purple.shade400,
+                                                value: 1,
+                                                groupValue: radioValue,
+                                                onChanged: GenderRadio),
+                                            new Text(
+                                              "Female",
+                                              style: new TextStyle(
+                                                  color: Colors.black),
+                                            ),
+                                          ],
+                                        ),
+                                      ],
+                                    ),
                                   ),
                                 ),
                               ],
@@ -356,28 +398,170 @@ class _AddServiceDetailsState extends State<AddServiceDetails> {
                                           : null,
                                   tfColor: Colors.grey.shade300,
                                 ),
-                                new Row(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  children: [
-                                    new Radio<int>(
-                                        activeColor: Colors.purple.shade400,
-                                        value: 0,
-                                        groupValue: radioValue2,
-                                        onChanged: handleRadioValue2Changed),
-                                    new Text(
-                                      "English",
-                                      style: new TextStyle(color: Colors.black),
+                                Container(
+                                  height: 60,
+                                  decoration: BoxDecoration(
+                                    color: Colors.grey.shade300,
+                                    border: Border.all(
+                                      color: Colors.grey
+                                          .shade300, //                   <--- border color
                                     ),
-                                    new Radio<int>(
-                                        activeColor: Colors.purple.shade400,
-                                        value: 1,
-                                        groupValue: radioValue2,
-                                        onChanged: handleRadioValue2Changed),
-                                    new Text(
-                                      "Arabic",
-                                      style: new TextStyle(color: Colors.black),
+                                    borderRadius: BorderRadius.all(
+                                      Radius.circular(20),
                                     ),
-                                  ],
+                                  ),
+                                  child: Padding(
+                                    padding: const EdgeInsets.symmetric(
+                                        horizontal: 15),
+                                    child: Row(
+                                      children: [
+                                        Icon(
+                                          Icons.miscellaneous_services_rounded,
+                                          color: Colors.grey[600],
+                                          //size: 1.0,
+                                        ),
+                                        SizedBox(
+                                          width: 10,
+                                        ),
+                                        Text("Language : "),
+                                        Spacer(),
+                                        new Row(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.center,
+                                          children: [
+                                            new Radio<int>(
+                                                activeColor:
+                                                    Colors.purple.shade400,
+                                                value: 0,
+                                                groupValue: radioValue2,
+                                                onChanged: languageRadio),
+                                            new Text(
+                                              "English",
+                                              style: new TextStyle(
+                                                  color: Colors.black),
+                                            ),
+                                            new Radio<int>(
+                                                activeColor:
+                                                    Colors.purple.shade400,
+                                                value: 1,
+                                                groupValue: radioValue2,
+                                                onChanged: languageRadio),
+                                            new Text(
+                                              "Arabic",
+                                              style: new TextStyle(
+                                                  color: Colors.black),
+                                            ),
+                                          ],
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                ),
+                                SizedBox(
+                                  height: 15,
+                                ),
+                                Container(
+                                  decoration: BoxDecoration(
+                                    color: Colors.grey.shade300,
+                                    border: Border.all(
+                                      color: Colors.grey
+                                          .shade300, //                   <--- border color
+                                    ),
+                                    borderRadius: BorderRadius.all(
+                                      Radius.circular(20),
+                                    ),
+                                  ),
+                                  child: Padding(
+                                    padding: const EdgeInsets.symmetric(
+                                        horizontal: 15, vertical: 20),
+                                    child: Column(
+                                      children: [
+                                        Row(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.center,
+                                          children: [
+                                            Icon(
+                                              Icons
+                                                  .miscellaneous_services_rounded,
+                                              color: Colors.grey[600],
+                                              //size: 1.0,
+                                            ),
+                                            SizedBox(
+                                              width: 15,
+                                            ),
+                                            Text("Services Included : "),
+                                          ],
+                                        ),
+                                        CheckboxListTile(
+                                          title: const Text('Coffee'),
+                                          secondary: const Icon(Icons.web),
+                                          activeColor: Colors.pink[400],
+                                          checkColor: Colors.white,
+                                          selected: cofee,
+                                          value: cofee,
+                                          onChanged: (bool value) {
+                                            setState(() {
+                                              cofee = value;
+                                            });
+                                          },
+                                        ),
+                                        CheckboxListTile(
+                                          title: const Text('Tea'),
+                                          secondary: const Icon(Icons.web),
+                                          activeColor: Colors.pink[400],
+                                          checkColor: Colors.white,
+                                          selected: Tea,
+                                          value: Tea,
+                                          onChanged: (bool value) {
+                                            setState(() {
+                                              Tea = value;
+                                            });
+                                          },
+                                        ),
+                                        CheckboxListTile(
+                                          title: const Text('Wifi'),
+                                          secondary: const Icon(Icons.web),
+                                          activeColor: Colors.pink[400],
+                                          checkColor: Colors.white,
+                                          selected: Wifi,
+                                          value: Wifi,
+                                          onChanged: (bool value) {
+                                            setState(() {
+                                              Wifi = value;
+                                            });
+                                          },
+                                        ),
+
+                                                                                CheckboxListTile(
+                                          title: const Text('Kids Place'),
+                                          secondary: const Icon(Icons.web),
+                                          activeColor: Colors.pink[400],
+                                          checkColor: Colors.white,
+                                          selected: Kids,
+                                          value: Kids,
+                                          onChanged: (bool value) {
+                                            setState(() {
+                                              Kids = value;
+                                            });
+                                          },
+                                        ),
+                                        CheckboxListTile(
+                                          title: const Text('Waiting Place'),
+                                          secondary: const Icon(Icons.web),
+                                          activeColor: Colors.pink[400],
+                                          checkColor: Colors.white,
+                                          selected: Waiting,
+                                          value: Waiting,
+                                          onChanged: (bool value) {
+                                            setState(() {
+                                              Waiting = value;
+                                            });
+                                          },
+                                        ),
+
+                                      ],
+                                    ),
+                                  ),
                                 ),
                                 Padding(
                                   padding: const EdgeInsets.all(18.0),

@@ -47,7 +47,9 @@ class TF extends StatelessWidget {
             ),
           ),
           enabledBorder: OutlineInputBorder(
-            borderRadius: BorderRadius.all(Radius.circular(90.0)),
+            borderRadius: BorderRadius.all(
+              Radius.circular(20),
+            ),
             borderSide: BorderSide(
               color: Colors.grey.shade300,
               width: 1.0,
@@ -111,7 +113,7 @@ class country_TF extends StatelessWidget {
                     ),
                   ),
                 ),
-                initialCountryCode: 'PK', 
+                initialCountryCode: 'PK',
                 onChanged: (phone) {
                   //when phone number country code is changed
                   print(phone.completeNumber); //get complete number
