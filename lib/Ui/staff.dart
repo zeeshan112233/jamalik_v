@@ -189,32 +189,32 @@ class staffScreenState extends State<staffScreen> {
                         ),
                       ),
                     ),
-              Padding(
-                padding: const EdgeInsets.all(18.0),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    !isloading
-                        ? PinkButtons(
-                            TextColor: Colors.white,
-                            Buttontext: "ADD NEW STAFF",
-                            onpress: () => {
-                              Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                    builder: (context) => AddStaff(),
-                                  ))
-                            },
-                          )
-                        : Container(
-                            // child: Center(
-                            //   child:
-                            //       CircularProgressIndicator(),
-                            // ),
-                            ),
-                  ],
-                ),
-              ),
+              // Padding(
+              //   padding: const EdgeInsets.all(18.0),
+              //   child: Row(
+              //     mainAxisAlignment: MainAxisAlignment.center,
+              //     children: [
+              //       !isloading
+              //           ? PinkButtons(
+              //               TextColor: Colors.white,
+              //               Buttontext: "ADD NEW STAFF",
+              //               onpress: () => {
+              //                 Navigator.push(
+              //                     context,
+              //                     MaterialPageRoute(
+              //                       builder: (context) => AddStaff(),
+              //                     ))
+              //               },
+              //             )
+              //           : Container(
+              //               // child: Center(
+              //               //   child:
+              //               //       CircularProgressIndicator(),
+              //               // ),
+              //               ),
+              //     ],
+              //   ),
+              // ),
             ],
           ),
         ),
