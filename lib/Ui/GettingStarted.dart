@@ -534,11 +534,17 @@ class GettingStartedState extends State<GettingStarted> {
                               )
                             : Container(
                                 child: Center(
-                                  child: CircularProgressIndicator(),
+                                  child: Image.asset(
+                                    'images/V2-White-BG.gif',
+                                    width: MediaQuery.of(context).size.width *
+                                        0.15,
+                                    height: MediaQuery.of(context).size.height *
+                                        0.15,
+                                  ),
                                 ),
                               ),
                         SizedBox(
-                          height: MediaQuery.of(context).size.height * 0.07,
+                          height: MediaQuery.of(context).size.height * 0.1,
                         ),
                       ],
                     ),

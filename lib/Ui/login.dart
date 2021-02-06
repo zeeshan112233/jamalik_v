@@ -252,7 +252,14 @@ class _loginState extends State<login> {
                                       })
                               : Container(
                                   child: Center(
-                                    child: CircularProgressIndicator(),
+                                    child: Image.asset(
+                                      'images/V2-White-BG.gif',
+                                      width: MediaQuery.of(context).size.width *
+                                          0.5,
+                                      height:
+                                          MediaQuery.of(context).size.height *
+                                              0.09,
+                                    ),
                                   ),
                                 ),
                           SizedBox(

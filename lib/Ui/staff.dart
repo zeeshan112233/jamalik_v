@@ -104,10 +104,24 @@ class staffScreenState extends State<staffScreen> {
                                             )
                                           : Container(
                                               child: Center(
-                                                child:
-                                                    CircularProgressIndicator(),
+                                                child: Image.asset(
+                                                  'images/V2-White-BG.gif',
+                                                  width: MediaQuery.of(context)
+                                                          .size
+                                                          .width *
+                                                      0.15,
+                                                  height: MediaQuery.of(context)
+                                                          .size
+                                                          .height *
+                                                      0.15,
+                                                ),
                                               ),
                                             ),
+                                      SizedBox(
+                                        height:
+                                            MediaQuery.of(context).size.height *
+                                                0.1,
+                                      ),
                                     ],
                                   ),
                                 ),
@@ -189,32 +203,32 @@ class staffScreenState extends State<staffScreen> {
                         ),
                       ),
                     ),
-              // Padding(
-              //   padding: const EdgeInsets.all(18.0),
-              //   child: Row(
-              //     mainAxisAlignment: MainAxisAlignment.center,
-              //     children: [
-              //       !isloading
-              //           ? PinkButtons(
-              //               TextColor: Colors.white,
-              //               Buttontext: "ADD NEW STAFF",
-              //               onpress: () => {
-              //                 Navigator.push(
-              //                     context,
-              //                     MaterialPageRoute(
-              //                       builder: (context) => AddStaff(),
-              //                     ))
-              //               },
-              //             )
-              //           : Container(
-              //               // child: Center(
-              //               //   child:
-              //               //       CircularProgressIndicator(),
-              //               // ),
-              //               ),
-              //     ],
-              //   ),
-              // ),
+              Padding(
+                padding: const EdgeInsets.all(18.0),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    !isloading
+                        ? PinkButtons(
+                            TextColor: Colors.white,
+                            Buttontext: "ADD NEW STAFF",
+                            onpress: () => {
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) => AddStaff(),
+                                  ))
+                            },
+                          )
+                        : Container(
+                            // child: Center(
+                            //   child:
+                            //       CircularProgressIndicator(),
+                            // ),
+                            ),
+                  ],
+                ),
+              ),
             ],
           ),
         ),

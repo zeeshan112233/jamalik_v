@@ -330,12 +330,7 @@ class _dashboardState extends State<dashboard> {
                                           Row(
                                             mainAxisAlignment: MainAxisAlignment.center,
                                             children: [
-                                              Center(
-                                                child: Expanded(
-                                                  child:
-                                                      Text("Please choose your working days"),
-                                                ),
-                                              ),
+                                              Text("Please choose your working days"),
                                             ],
                                           ),
                                           SizedBox(
